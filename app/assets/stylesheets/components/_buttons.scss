@@ -1,8 +1,8 @@
 .custom-link {
   background-color: $blue;
   color: $yellow;
-  // border: 2px solid $blue;
-  // border-radius: 50% 10% / 20% 50%;
+  border: 2px solid $blue;
+  border-radius: 50% 10% / 20% 50%;
   border-radius: 80px;
   width: 180px;
   font-size: 18px;
@@ -17,13 +17,13 @@
   &:hover {
     background-color: transparent;
     color: $blue;
-    // border: 2px solid $blue;
+    border: 2px solid $blue;
     // border-radius: 50% 20% / 10% 40%;
-    transition: all 0.5s;
+    transition: all 0.3s;
   }
-  &:hover span {
-    transform: rotate(8deg);
-  }
+  // &:hover span {
+  //   transform: rotate(8deg);
+  // }
   &:hover i {
     transform: scale(1.5);
   }
