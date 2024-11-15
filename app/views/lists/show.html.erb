@@ -5,6 +5,7 @@
       <div class="cards">
         <% @list.bookmarks.each do |bookmark| %>
           <%= render "lists/card_movie", bookmark: bookmark %>
+          <%= render "lists/modal", bookmark: bookmark %>
         <% end %>
       </div>
     </div>
@@ -18,7 +19,7 @@
         <% end %>
       </div>
     </div>
-    <%= link_to "Back to all lists", lists_path(@list) %>
+    <%= link_to "Back to all lists", lists_path, class: 'text-decoration-none my-5' %>
     <%# <%= link_to "Add a movie", new_list_bookmark_path(@list) %>
   </div>
 </div>
