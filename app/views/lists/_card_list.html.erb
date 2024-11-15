@@ -1,4 +1,7 @@
-<div class="card-list" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+<div class="item card-list" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.attached? ? cl_image_path(list.photo.key) : image_path('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPQDYau3Hs4-xw1i8jVSUY4BlF4FLmg8lQqg&usqp=CAU') %>)">
   <%= link_to list.name, list_path(list), class: 'text-decoration-none text-white' %>
   <%= link_to "", list_path(list), class: 'card-list-link' %>
+  <%= link_to list_path(list), data: {turbo_method: :delete}, class: "delete-btn" do %>
+    <i class="fa-solid fa-xmark"></i>
+  <% end %>
 </div>
