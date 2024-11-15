@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row justify-content-around">
+    <div class="col-lg-8">
+      <h1><%= @list.name %></h1>
+      <div class="cards">
+        <% @list.bookmarks.each do |bookmark| %>
+          <%= render "lists/card_movie", bookmark: bookmark %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="side-form">
+        <h3>Add a movie to <%= @list.name %></h3>
+        <%= simple_form_for [@list, @bookmark] do |f| %>
+          <%= f.association :movie, as: :select %>
+          <%= f.input :comment %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+    </div>
+    <%= link_to "Back to all lists", lists_path(@list) %>
+    <%# <%= link_to "Add a movie", new_list_bookmark_path(@list) %>
+  </div>
+</div>

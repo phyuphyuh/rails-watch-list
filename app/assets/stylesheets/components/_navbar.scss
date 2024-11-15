@@ -1,0 +1,21 @@
+.navbar-lewagon {
+  justify-content: space-between;
+  background: $dark-navy;
+
+  a {
+    color: $nyanza;
+    &:hover {
+      color: $yellow;
+    }
+  }
+  .nav-link {
+    margin: 0 5px;
+  }
+  .navbar-collapse {
+    flex-grow: 0;
+    margin-right: 20px;
+  }
+  .navbar-brand {
+    margin-left: 20px;
+  }
+}

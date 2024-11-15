@@ -1,0 +1,13 @@
+<%= render "lists/banner" %>
+<div class="container my-4 mx-5">
+  <h2>My lists</h2>
+  <div class="cards">
+    <% @lists.each do |list| %>
+      <%= render "lists/card_list", list: list %>
+    <% end %>
+  </div>
+  <%# <%= link_to "Create a movie list", new_list_path(@list), class: 'custom-link' %>
+  <%= link_to new_list_path(@list), class: 'custom-link' do %>
+    <i class="fa-solid fa-plus"></i><span> Create a list</span>
+  <% end %>
+</div>
