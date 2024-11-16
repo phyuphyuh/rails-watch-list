@@ -1,7 +1,7 @@
 .card-movie {
   overflow: hidden;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
   border: 2px solid $green;
   position: relative;
   height: 500px;
@@ -11,17 +11,19 @@
     width: 100%;
     object-fit: cover;
   }
-
   h2 {
     font-size: 16px;
     font-weight: bold;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
+    height: 24px;
   }
-
+  hr {
+    border-bottom: 0.6px solid $green;
+  }
   p {
     font-size: 12px;
     opacity: .7;
-    margin: 0 auto;
+    margin: 10px auto;
     width: 200px;
 
     &.overflow-ellipsis {
@@ -41,7 +43,6 @@
     align-items: flex-start;
 
     .card-movie-comment-section {
-      margin: 20px 0;
       width: 200px;
       height: 200px;
 
@@ -54,7 +55,6 @@
         font-weight: bold;
         font-size: 14px;
       }
-
       a {
         position: absolute;
         bottom: 8px;
@@ -63,7 +63,10 @@
         color: $green;
       }
     }
-
+  }
+  &:hover {
+    opacity: 0.9;
+    outline: 2px solid $green;
   }
 }
 

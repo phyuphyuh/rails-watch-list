@@ -5,16 +5,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
   font-size: 24px;
   font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   position: relative;
-  // &:hover {
 
-  // }
+  h2 a {
+    color: $nyanza;
+  }
+
+  &:hover h2 a {
+    opacity: 0.8;
+  }
 }
 
 .card-list-link {
@@ -29,4 +33,9 @@
   top: 3px;
   right: 8px;
   color: $nyanza;
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 1;
+  }
 }

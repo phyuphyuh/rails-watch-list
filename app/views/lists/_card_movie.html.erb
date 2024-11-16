@@ -1,8 +1,9 @@
-<div class="card-movie" data-bs-toggle="modal" data-bs-target="#<%= bookmark.movie.id %>">
+<div class="card-movie" role="button" data-bs-toggle="modal" data-bs-target="#<%= bookmark.movie.id %>">
   <%= image_tag bookmark.movie.poster_url, alt: "#{bookmark.movie.title}" %>
   <div class="card-movie-infos">
     <div>
       <h2><%= bookmark.movie.title %></h2>
+      <hr>
       <p class="overflow-ellipsis"><%= bookmark.movie.overview %></p>
       <p><%= bookmark.movie.rating.round(1) %></p>
     </div>
