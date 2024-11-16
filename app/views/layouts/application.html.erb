@@ -10,7 +10,11 @@
     <%# <%= hotwire_livereload_tags if Rails.env.development? %>
   </head>
   <body>
-    <%= render "shared/navbar" %>
+    <% if content_for? :navbar %>
+      <%= content_for :navbar %>
+    <% else %>
+      <%= render "shared/navbar" %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

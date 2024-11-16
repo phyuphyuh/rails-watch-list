@@ -1,6 +1,10 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: $dark-navy;
+.home-navbar-lewagon {
+  // justify-content: space-between;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  width: 100%;
 
   a {
     color: $nyanza;
