@@ -12,8 +12,6 @@
   <body>
     <% if content_for? :navbar %>
       <%= content_for :navbar %>
-    <% else %>
-      <%= render "shared/navbar" %>
     <% end %>
     <%= yield %>
   </body>

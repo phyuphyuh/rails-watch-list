@@ -1,4 +1,4 @@
-<% content_for :navbar, render('lists/home_nav') %>
+<%# <%= content_for :navbar, render('lists/home_nav') %>
 <%= render "lists/banner" %>
 <div class="container">
   <h2>My lists</h2>
@@ -8,7 +8,5 @@
     <% end %>
   </div>
   <%# <%= link_to "Create a movie list", new_list_path(@list), class: 'custom-link' %>
-  <%= link_to new_list_path(@list), class: 'custom-link' do %>
-    <i class="fa-solid fa-plus"></i><span> Create a list</span>
-  <% end %>
+  <%= render "lists/form_modal" %>
 </div>

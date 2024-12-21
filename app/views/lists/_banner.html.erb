@@ -1,6 +1,37 @@
 <div class="banner">
-  <div class="container">
-    <h1>Save your favorite films</h1>
-    <p>Create lists, track movies, write reviews</p>
+  <%# <div class="tagline-container">
+    <div class="tagline-content scroll">
+      <h3>Log your favorite films</h3>
+      <h3>Create lists</h3>
+      <h3>Write reviews</h3>
+      <h3>Share yourself in film</h3>
+    </div>
+  </div> %>
+  <div class="hero-nav d-flex justify-content-around">
+    <%# <%= link_to "CREATE A LIST", new_list_path(@list), class: "create-btn", role: "button", data: { bs_toggle:"modal", bs_target: "#createNewList" } %>
+    <%= link_to "CREATE A LIST", new_list_path(@list), class: "create-btn", role: "button" %>
+    <%= link_to "ALL LISTS", lists_path(@list), class: "create-btn", role: "button" %>
   </div>
+  <%= link_to root_path, class: "text-decoration-none" do %>
+    <h1>WATCHLIST</h1>
+  <% end %>
+  <div class="desc">
+    <div class="marquee left">
+      <h3>Log your favorite films</h3>
+      <h3>Write reviews</h3>
+    </div>
+    <div class="marquee right">
+      <h3>Share yourself in film</h3>
+      <h3>Create lists</h3>
+    </div>
+  </div>
+  <%# <h1>Save your favorite films</h1> %>
+  <%# <p>Create lists, log movies, write reviews</p> %>
+  <%# <div class="d-flex justify-content-around"> %>
+  <%# <div class="movie-stills">
+    </div> %>
+  <div class="emojis">
+    🍿
+  </div>
+  <%# </div> %>
 </div>

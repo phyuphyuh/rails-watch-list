@@ -16,6 +16,7 @@
     font-weight: bold;
     margin-bottom: 24px;
     height: 24px;
+    padding-left: 5%;
   }
   hr {
     border-bottom: 0.6px solid $green;
@@ -24,7 +25,7 @@
     font-size: 12px;
     opacity: .7;
     margin: 10px auto;
-    width: 200px;
+    width: 90%;
 
     &.overflow-ellipsis {
       display: -webkit-box;
@@ -43,10 +44,10 @@
     align-items: flex-start;
 
     .card-movie-comment-section {
-      width: 200px;
       height: 200px;
 
       p {
+        width: 90%;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;

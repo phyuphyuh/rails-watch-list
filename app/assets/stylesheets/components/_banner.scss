@@ -1,29 +1,159 @@
 .banner {
-  background-size: cover;
-  background-position: top;
+  // background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), asset-url("coraline.jpg");
+  background-color: $cream;
+  // background-size: cover;
+  // background-position: top;
   background-attachment: fixed;
-  padding: 232px 0;
+  padding: 0;
+  height: 80vh;
   text-align: center;
-  animation: slideshow 10s ease-in-out infinite;
+  // animation: slideshow 10s ease-in-out infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  // border-bottom: 1px solid $blue;
+
+  // .tagline-container {
+  //   width: 640px;
+  //   height: 360px;
+  //   border-radius: 16px;
+  //   background-size: cover;
+  //   background-position: top;
+  //   animation: slideshow 10s ease-in-out infinite;
+
+  //   display: flex;
+  //   justify-content: center;
+  //   overflow: hidden;
+  //   white-space: nowrap;
+
+  //   .tagline-content {
+
+  //     h3 {
+  //       font-family: "Didact Gothic", serif;
+  //       font-size: 60px;
+  //       color: $yellow;
+  //     }
+  //     h3:nth-child(even) {
+  //       color: $lightneonyellow;
+  //     }
+  //   }
+  //   .scroll {
+  //     animation: scroll 8s linear infinite;
+  //   }
+  //   @keyframes scroll {
+  //     0% {
+  //       transform: translateY(100%);
+  //     }
+  //     100% {
+  //       transform: translateY(-100%);
+  //     }
+  //   }
+  // }
 
   h1 {
-    color: $nyanza;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-    font-size: 40px;
-    font-weight: 500;
+    color: $blue;
+    // text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    // font-size: 160px;
+    font-size: 12vw;
+    margin-top: 72px;
+    transition: font-family 500ms ease-out;
+    &:hover {
+      font-family: "Londrina Shadow", serif;
+    }
   }
-  p {
-    font-size: 20px;
-    color: $tea-green;
-    opacity: .7;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  .desc {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: justify;
+    overflow: hidden;
+    white-space: nowrap;
+
+    .marquee.left {
+      display: flex;
+      justify-content: space-between;
+      animation: scroll-left 20s linear infinite;
+
+      @keyframes scroll-left {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+    }
+    .marquee.right {
+      display: flex;
+      justify-content: space-between;
+      animation: scroll-right 20s linear infinite;
+
+      @keyframes scroll-right {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(100%);
+        }
+      }
+    }
+    h3 {
+      font-family: "Didact Gothic", serif;
+      // font-size: 60px;
+      font-size: 3.6vw;
+      color: $yellow;
+    }
+
   }
+
+  .hero-nav {
+    width: 240px;
+    margin-top: 24px;
+  }
+
+  .movie-stills {
+    position: absolute;
+    bottom: 24px;
+    z-index: 3;
+    width: 440px;
+    height: 260px;
+    border-radius: 16px;
+    background-size: cover;
+    background-position: top;
+    animation: slideshow 10s ease-in-out infinite;
+  }
+  .emojis {
+    font-size: 160px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    &:hover {
+      transition: 0.2s ease-out;
+      transform: translateY(-8px);
+    }
+  }
+  // p {
+  //   font-size: 20px;
+  //   color: $tea-green;
+  //   opacity: .7;
+  //   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  // }
 
   @keyframes slideshow {
     0% { background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), asset-url("spiritedaway.jpg"); }
-    25% { background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), asset-url("ladybird.jpg"); }
-    50% { background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), asset-url("coraline.jpg"); }
-    75% { background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), asset-url("littlewomen.jpg"); }
+    33% { background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), asset-url("ladybird.jpg"); }
+    66% { background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), asset-url("coraline.jpg"); }
     100% { background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), asset-url("bottoms.jpg"); }
   }
+}
+
+.banner-show {
+  background-size: cover;
+  background-position: top;
+  padding: 232px 0;
 }

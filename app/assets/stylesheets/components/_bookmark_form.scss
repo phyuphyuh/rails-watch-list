@@ -1,0 +1,36 @@
+.bookmark-header {
+  border: 2px solid $green;
+  // padding: 10px
+}
+
+.bookmark-form {
+  // width: 90%;
+  // height: 420px;
+  background-color: $light-gray;
+  // border: 2px solid $green;
+  padding: 20px;
+  position: relative;
+  // border-radius: 18px;
+  input {
+    font-size: 12px;
+    border-radius: 10px;
+  }
+}
+
+.submit-btn {
+  padding: 6px 14px;
+  background-color: transparent;
+  color: $green;
+  border: 2px solid $green;
+  margin: 0 auto;
+  width: fit-content;
+  position: absolute;
+  top: 18px;
+  right: 20px;
+
+  &:hover {
+    background-color: $blue;
+    color: $yellow;
+    border: 2px solid $blue;
+  }
+}

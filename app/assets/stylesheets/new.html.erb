@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Create a new class</h1>
+  <%= simple_form_for [@art_class] do |f| %>
+    <%= f.input :title %>
+    <%= f.input :category, collection: ArtClass::CATEGORIES %>
+    <%= f.input :description %>
+    <%= f.input :dates,
+            as: :string,
+            input_html: { data: { controller: "datepicker",
+            mode: "multiple",
+            dateFormat: "Y-m-d" } } %>
+    <%= f.input :location %>
+    <%= f.input :price %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit class: 'submit-btn' %>
+  <% end %>
+</div>
