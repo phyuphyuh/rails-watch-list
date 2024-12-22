@@ -1,12 +1,4 @@
 <div class="banner">
-  <%# <div class="tagline-container">
-    <div class="tagline-content scroll">
-      <h3>Log your favorite films</h3>
-      <h3>Create lists</h3>
-      <h3>Write reviews</h3>
-      <h3>Share yourself in film</h3>
-    </div>
-  </div> %>
   <div class="hero-nav d-flex justify-content-around">
     <%# <%= link_to "CREATE A LIST", new_list_path(@list), class: "create-btn", role: "button", data: { bs_toggle:"modal", bs_target: "#createNewList" } %>
     <%= link_to "CREATE A LIST", new_list_path(@list), class: "create-btn", role: "button" %>
@@ -27,10 +19,5 @@
   </div> %>
   <div class="subtitles mb-5">
   </div>
-  <%# <h1>Save your favorite films</h1> %>
-  <%# <p>Create lists, log movies, write reviews</p> %>
-  <%# <div class="emojis">
-    🍿
-  </div> %>
   <%= render "lists/stills_marquee" %>
 </div>

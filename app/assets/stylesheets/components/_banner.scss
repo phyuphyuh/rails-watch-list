@@ -17,54 +17,18 @@
   white-space: nowrap;
   overflow: hidden;
 
-  // .tagline-container {
-  //   width: 640px;
-  //   height: 360px;
-  //   border-radius: 16px;
-  //   background-size: cover;
-  //   background-position: top;
-  //   animation: slideshow 10s ease-in-out infinite;
-
-  //   display: flex;
-  //   justify-content: center;
-  //   overflow: hidden;
-  //   white-space: nowrap;
-
-  //   .tagline-content {
-
-  //     h3 {
-  //       font-family: "Didact Gothic", serif;
-  //       font-size: 60px;
-  //       color: $yellow;
-  //     }
-  //     h3:nth-child(even) {
-  //       color: $lightneonyellow;
-  //     }
-  //   }
-  //   .scroll {
-  //     animation: scroll 8s linear infinite;
-  //   }
-  //   @keyframes scroll {
-  //     0% {
-  //       transform: translateY(100%);
-  //     }
-  //     100% {
-  //       transform: translateY(-100%);
-  //     }
-  //   }
-  // }
-
   h1 {
     color: $blue;
     // text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
     // font-size: 160px;
     font-size: 12vw;
-    margin-top: 52px;
+    margin-top: 24px;
     transition: font-family 500ms ease-out;
     &:hover {
       font-family: "Londrina Shadow", serif;
     }
   }
+
   // .desc {
   //   width: 100%;
   //   display: flex;
@@ -113,15 +77,14 @@
   //   }
 
   // }
+
   .subtitles {
     font-family: Helvetica, Arial, sans-serif;
-    // font-family: "Didact Gothic", serif;
     font-size: 24px;
-    // font-weight: 400;
     font-style: italic;
     color: $subtitleyellow;
-    text-shadow: -0.1px -0.1px 0 $jet, 0.1px -0.1px 0 $jet,
-          -0.1px 0.1px 0 #000, 0.1px 0.1px 0 $jet;
+    // text-shadow: -0.4px -0.4px 0.5px $jet, 0.4px -0.4px 0.5px $jet,
+    //       -0.4px 0.4px 0.5px $jet, 0.4px 0.4px 0.5px $jet;
   }
   .subtitles::before {
     content: "Log your favorite films.";
@@ -146,7 +109,6 @@
 
   .hero-nav {
     width: 240px;
-    margin-top: 24px;
   }
 
   .img-grid {
@@ -191,21 +153,6 @@
       }
     }
   }
-
-
-
-
-  // .movie-stills {
-  //   position: absolute;
-  //   bottom: 24px;
-  //   z-index: 3;
-  //   width: 440px;
-  //   height: 260px;
-  //   border-radius: 16px;
-  //   background-size: cover;
-  //   background-position: top;
-  //   animation: slideshow 10s ease-in-out infinite;
-  // }
 
   // .emojis {
   //   font-size: 160px;
