@@ -1,0 +1,19 @@
+.form {
+  padding: 24px 32px;
+  margin-top: 50px;
+  color: $lighter-jet;
+  background-color: transparent;
+  border: 1px solid $lighter-jet;
+  border-radius: 8px;
+
+  h2 {
+
+
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .btn {
+    width: 100%;
+    margin-bottom: 20px
+  }
+}
