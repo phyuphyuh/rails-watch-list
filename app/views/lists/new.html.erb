@@ -4,14 +4,18 @@
     <div class="col-12 col-lg-8">
       <div class="form">
         <h2>New List</h2>
-        <%= simple_form_for @list do |f| %>
+        <%= simple_form_for @list, html: { multipart: true, data: { controller: "form-img-preview" } } do |f| %>
           <div class="form-inputs">
-            <%= f.input :name %>
-            <%= f.input :description %>
-            <%= f.input :photo, as: :file %>
+            <%= f.input :name, label: "NAME" %>
+            <%= f.input :description, label: "DESCRIPTION" %>
+            <%= f.input :photo, as: :file,
+                        label: "COVER IMAGE",
+                        input_html: { data: { "form-img-preview-target": "input", action: "form-img-preview#preview" }, accept: "image/*" } %>
+          </div>
+          <div class="image-preview" data-form-img-preview-target="preview">
           </div>
           <div class="form-actions">
-            <%= f.submit class: 'btn' %>
+            <%= f.submit "CREATE LIST", class: 'create-btn' %>
           </div>
         <% end %>
       </div>

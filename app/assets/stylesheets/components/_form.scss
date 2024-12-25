@@ -17,3 +17,11 @@
     margin-bottom: 20px
   }
 }
+
+.image-preview img {
+  margin: 10px auto;
+  display: block;
+  max-width: 100%;
+  border: 1px solid $jet;
+  border-radius: 5px;
+}
