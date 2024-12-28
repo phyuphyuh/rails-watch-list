@@ -12,7 +12,7 @@ export default class extends Controller {
         let image = this.previewTarget.querySelector("img");
         if (!image) {
           image = document.createElement("img");
-          image.style.maxWidth = "240px";
+          image.style.maxWidth = "260px";
           this.previewTarget.appendChild(image);
         }
         // this.previewTarget.setAttribute('src', event.target.result);

@@ -1,23 +1,27 @@
-<div class="container">
-  <%= link_to "BACK", lists_path, class: "create-btn", role: "button" %>
-  <div class="row justify-content-center">
-    <div class="col-12 col-lg-8">
-      <div class="form">
-        <h2>New List</h2>
-        <%= simple_form_for @list, html: { multipart: true, data: { controller: "form-img-preview" } } do |f| %>
-          <div class="form-inputs">
-            <%= f.input :name, label: "NAME" %>
-            <%= f.input :description, label: "DESCRIPTION" %>
-            <%= f.input :photo, as: :file,
+<div class="form-page">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8">
+        <div class="form">
+          <h2>NEW LIST</h2>
+          <%= simple_form_for @list, html: { multipart: true, data: { controller: "form-img-preview" } } do |f| %>
+            <div class="form-inputs">
+              <%= f.input :name, label: "NAME", placeholder: "name of the list", input_html: { class: "custom-input" } %>
+              <%= f.input :description, label: "DESCRIPTION", placeholder: "add a description", input_html: { class: "custom-input" } %>
+              <%= f.input :photo, as: :file,
                         label: "COVER IMAGE",
-                        input_html: { data: { "form-img-preview-target": "input", action: "form-img-preview#preview" }, accept: "image/*" } %>
-          </div>
-          <div class="image-preview" data-form-img-preview-target="preview">
-          </div>
-          <div class="form-actions">
-            <%= f.submit "CREATE LIST", class: 'create-btn' %>
-          </div>
-        <% end %>
+                        input_html: { data: { "form-img-preview-target": "input", action: "form-img-preview#preview" }, accept: "image/*", class: "file-input" }%>
+            </div>
+            <div class="image-preview" data-form-img-preview-target="preview">
+            </div>
+            <div class="d-flex align-items-center">
+              <div class="form-actions">
+                <%= f.submit "CREATE LIST", class: 'custom-btn' %>
+              </div>
+              <%= link_to "BACK", lists_path, class: "custom-btn my-4 d-inline-block ms-2", role: "button" %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

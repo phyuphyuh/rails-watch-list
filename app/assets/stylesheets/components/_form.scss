@@ -1,14 +1,12 @@
 .form {
-  padding: 24px 32px;
+  padding: 24px 32px 32px;
   margin-top: 50px;
   color: $lighter-jet;
   background-color: transparent;
-  border: 1px solid $lighter-jet;
-  border-radius: 8px;
+  // border: 1px solid $lighter-jet;
+  // border-radius: 4px;
 
   h2 {
-
-
     margin-bottom: 30px;
     text-align: center;
   }
@@ -16,10 +14,35 @@
     width: 100%;
     margin-bottom: 20px
   }
+
+  .form-control:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    background-color: transparent;
+  }
+
+}
+
+.custom-input {
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid $lighter-jet;
+  font-family: "Cutive Mono", serif;
+  background-color: transparent;
+
+  &:focus {
+    border-bottom: 1px solid $subtitleyellow;
+  }
+}
+
+.file-input {
+  font-family: "Cutive Mono", serif;
+  background-color: transparent;
+  border-radius: 0;
 }
 
 .image-preview img {
-  margin: 10px auto;
+  margin: 10px 0 16px;
   display: block;
   max-width: 100%;
   border: 1px solid $jet;
