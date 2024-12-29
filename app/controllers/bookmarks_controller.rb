@@ -6,12 +6,24 @@ class BookmarksController < ApplicationController
 
   def create
     @list = List.find(params[:list_id])
-    @bookmark = Bookmark.new(bookmark_params)
-    @bookmark.list = @list
+    @movie = Movie.find_by(api_id: params[:movie_id])
+    # @bookmark = Bookmark.new(bookmark_params)
+    # @bookmark.list = @list
+    @bookmark = @list.bookmarks.new(bookmark_params.merge(movie: @movie))
+
     if @bookmark.save
       redirect_to list_path(@list)
     else
       render 'lists/show', status: :unprocessable_entity
+    end
+  end
+
+  def search
+    movie_service = MovieSearchService.new(params[:query])
+    @movies = movie_service.call
+
+    respond_to do |format|
+      format.js { render 'search_results' }
     end
   end
 
@@ -24,6 +36,6 @@ class BookmarksController < ApplicationController
   private
 
   def bookmark_params
-    params.require(:bookmark).permit(:movie_id, :comment)
+    params.require(:bookmark).permit(:comment)
   end
 end
