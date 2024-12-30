@@ -1,0 +1,3 @@
+<div class="movie-search-card " style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= movie.photo.attached? ? cl_image_path(movie.photo.key) : image_path(movie.poster_url) %>)">
+  <h3><%= movie.title %></h3>
+</div>
