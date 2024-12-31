@@ -25,7 +25,9 @@
                       data-action="keyup->search-movie#search"
               data-search-movie-target="input">
               <%# </form> %>
-              <%= render 'bookmarks/search_results', movies: @movies %>
+              <div data-search-movie-target="results">
+                <%= render 'bookmarks/search_results', movies: @movies %>
+              </div>
             </div>
             <div class="d-flex align-items-center">
               <div class="form-actions">

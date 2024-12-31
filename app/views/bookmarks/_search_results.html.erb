@@ -1,11 +1,13 @@
-<div data-search-movie-target="results">
-  <% if params[:query].present? %>
-    <%# <% if movies.any? %>
-    <h5><%= pluralize movies.count, 'result' %> for <code><%= params[:query] %></code></h5>
-    <div class="cards">
-      <% movies.each do |movie| %>
-        <%= render 'lists/movie_card', movie: movie %>
-      <% end %>
-    </div>
-  <% end %>
-</div>
+<%# <div data-search-movie-target="results"> %>
+<%# <% if params[:query].present? %>
+<% if movies.any? %>
+  <h5><%= pluralize movies.count, 'result' %> for <code><%= params[:query] %></code></h5>
+  <div class="cards">
+    <% movies.each do |movie| %>
+      <%= render 'bookmarks/movie_card', movie: movie %>
+    <% end %>
+  </div>
+<% else %>
+  <p>No results found for <code><%= params[:query] %></code></p>
+<% end %>
+<%# </div> %>
