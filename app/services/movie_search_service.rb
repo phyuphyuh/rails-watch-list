@@ -26,7 +26,6 @@ class MovieSearchService
     begin
       json = URI.open(url).read
       results = JSON.parse(json)['results']
-      Rails.logger.debug "API Results: #{results.inspect}"
 
       # results.filter_map do |result|
       #   next if result['id'].nil? || result['title'].nil?
@@ -63,11 +62,22 @@ class MovieSearchService
     url = "https://api.themoviedb.org/3/movie/#{@api_id}?api_key=#{@api_key}"
     json = URI.open(url).read
     result = JSON.parse(json)
-    Movie.find_or_create_by(api_id: result['id']) do |movie|
-      movie.title = result['title']
-      movie.poster_url = "https://image.tmdb.org/t/p/w500#{result['poster_path']}"
-      movie.rating = result['vote_average']
-      movie.overview = result['overview']
+    # Movie.find_or_create_by(api_id: result['id']) do |movie|
+    #   movie.title = result['title']
+    #   movie.poster_url = "https://image.tmdb.org/t/p/w500#{result['poster_path']}"
+    #   movie.rating = result['vote_average']
+    #   movie.overview = result['overview']
+    # end
+    movie = Movie.find_by(api_id: result['id'])
+    if movie.nil?
+      Movie.create(
+        title: result['title'],
+        poster_url: "https://image.tmdb.org/t/p/w500#{result['poster_path']}",
+        rating: result['vote_average'],
+        overview: result['overview']
+      )
+    else
+      movie
     end
   rescue OpenURI::HTTPError => e
     Rails.logger.error("Error fetching movie details: #{e.message}")

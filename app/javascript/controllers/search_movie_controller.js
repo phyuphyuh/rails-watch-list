@@ -1,16 +1,22 @@
 import { Controller } from "@hotwired/stimulus"
+import debounce from "lodash.debounce";
 
 export default class extends Controller {
   static targets = ["input", "results"];
 
   connect() {
     console.log("connected!");
+    this.debouncedSearch = debounce(this.search.bind(this), 300);
+    this.inputTarget.addEventListener("input", this.debouncedSearch);
+  }
+
+  disconnect() {
+    this.inputTarget.removeEventListener("input", this.debouncedSearch);
   }
 
   search(event) {
     event.preventDefault();
 
-     // const query = this.inputTarget.value.trim();
     const query = encodeURIComponent(this.inputTarget.value.trim());
     // const query = this.inputTarget.value.split(' ').join('+')
     if (query === "") return;
@@ -22,10 +28,32 @@ export default class extends Controller {
     fetch(url, { headers: { 'Accept': 'text/plain' } })
       .then(response => response.text())
       .then((data) => {
-        console.log("Received data:", data);
         this.resultsTarget.innerHTML = data;
       })
       .catch(error => console.error("Error fetching search results:", error));
   }
 
+  addMovie(event) {
+    event.preventDefault();
+
+    const movieId = event.currentTarget.dataset.movieId;
+    // const listId = this.element.dataset.listId;
+    const listId = this.data.get("listId");
+    const url = `lists/${listId}/bookmarks`;
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "applicaiton/json"
+      },
+      body: JSON.stringify({ movie_id: movieId })
+    })
+      .then(response => response.json())
+      .then((data) => {
+        console.log(data);
+        alert("Movie added to the list!");
+      })
+      .catch(error => console.error("Error adding movie:", error));
+  }
 }

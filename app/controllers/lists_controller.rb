@@ -17,17 +17,10 @@ class ListsController < ApplicationController
   end
 
   def new
-    Rails.logger.debug "Query param: #{params[:query]}"
     @list = List.new
-    query = params[:query]
-    Rails.logger.debug "Query param: #{query}"
-    @movies = query.present? ? MovieSearchService.new(query: query).call : []
-    Rails.logger.debug "Movies in controller: #{@movies.map(&:title)}"
-    # @movies = params[:query].present? ? MovieSearchService.new(query: params[:query]).call : []
-    # Rails.logger.debug "Movies from service: #{@movies.map { |m| m.title }}"
-
-    Movie.all.each { |movie| Rails.logger.debug "Movie in DB: #{movie.title}, API ID: #{movie.api_id}" }
-
+    # query = params[:query]
+    # @movies = query.present? ? MovieSearchService.new(query: query).call : []
+    @movies = params[:query].present? ? MovieSearchService.new(query: params[:query]).call : []
 
     respond_to do |format|
       format.html

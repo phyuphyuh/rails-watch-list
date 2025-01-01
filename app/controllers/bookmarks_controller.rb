@@ -18,9 +18,17 @@ class BookmarksController < ApplicationController
     @bookmark = @list.bookmarks.new(movie: movie, comment: bookmark_params[:comment])
 
     if @bookmark.save
-      redirect_to list_path(@list)
+      # redirect_to list_path(@list)
+      respond_to do |format|
+        format.html { redirect_to list_path(@list) }
+        format.json { render json: { success: true } }
+      end
     else
-      render 'lists/show', status: :unprocessable_entity
+      # render 'lists/show', status: :unprocessable_entity
+      respond_to do |format|
+        format.html { render 'lists/show', status: :unprocessable_entity }
+        format.json { render json: { success: false }, status: :unprocessable_entity }
+      end
     end
   end
 
