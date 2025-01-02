@@ -9,26 +9,32 @@ class BookmarksController < ApplicationController
     # @bookmark = Bookmark.new(bookmark_params)
     # @bookmark.list = @list
 
-    movie = Movie.find_by(api_id: params[:api_id])
+    movie_ids = params[:movie_ids].is_a?(Array) ? [params[:movie_id]] : params[:movie_ids].to_s.split(',')
 
-    unless movie
-      movie = MovieSearchService.new(api_id: params[:api_id]).call.first
+    movie_ids.each do |movie_id|
+      movie = Movie.find_by(api_id: movie_id) || MovieSearchService.new(api_id: movie_id).call.first
+
+      if movie
+        @list.bookmarks.find_or_create_by(movie: movie) do |bookmark|
+          bookmark.comment = bookmark_params[:comment]
+        end
+      end
+
+      # if movie
+      #   bookmark = @list.bookmarks.find_by(movie: movie)
+      #   bookmark.create(bookmark_params.merge(movie: movie))
+      # end
     end
 
-    @bookmark = @list.bookmarks.new(movie: movie, comment: bookmark_params[:comment])
-
-    if @bookmark.save
-      # redirect_to list_path(@list)
-      respond_to do |format|
-        format.html { redirect_to list_path(@list) }
-        format.json { render json: { success: true } }
-      end
-    else
-      # render 'lists/show', status: :unprocessable_entity
-      respond_to do |format|
-        format.html { render 'lists/show', status: :unprocessable_entity }
-        format.json { render json: { success: false }, status: :unprocessable_entity }
-      end
+    respond_to do |format|
+      format.html { redirect_to list_path(@list) }
+      format.json { render json: { success: true } }
+    end
+  rescue => e
+    Rails.logger.error("Error adding bookmarks: #{e.message}")
+    respond_to do |format|
+      format.html { render 'lists/show', status: :unprocessable_entity }
+      format.json { render json: { success: false }, status: :unprocessable_entity }
     end
   end
 

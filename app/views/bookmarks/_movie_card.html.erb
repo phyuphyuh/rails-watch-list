@@ -1,8 +1,0 @@
-<div class="movie-search-card " style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_path(movie.poster_url || asset_path('no_image.jpg')) %>)">
-  <h3><%= movie.title %></h3>
-  <button class="btn"
-          data-action="click->search-movie#addMovie"
-    data-movie-id="<%= movie.api_id %>">
-    Add
-  </button>
-</div>
