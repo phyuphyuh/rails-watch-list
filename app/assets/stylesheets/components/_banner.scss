@@ -26,12 +26,14 @@
   h1 {
     color: $blue;
     // text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-    font-size: 96px;
+    font-family: "Roboto Flex", Helvetica, serif;
+    font-weight: 700;
+    font-size: 72px;
     margin-top: 40px;
     transition: font-family 500ms ease-out;
-    &:hover {
-      font-family: "Londrina Shadow", serif;
-    }
+    // &:hover {
+    //   font-family: "Londrina Shadow", serif;
+    // }
   }
 
   // .desc {

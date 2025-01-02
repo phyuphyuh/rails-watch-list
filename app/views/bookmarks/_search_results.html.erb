@@ -1,6 +1,6 @@
 <%# <div data-search-movie-target="results"> %>
 <% if movies.present? %>
-  <h5><%= pluralize movies.count, 'result' %> for <code><%= params[:query] %></code></h5>
+  <h5 class="my-2"><%= pluralize movies.count, 'result' %> for <code><%= params[:query] %></code></h5>
   <div class="cards">
     <% movies.each do |movie| %>
       <%= render 'bookmarks/movie_search_card', movie: movie %>

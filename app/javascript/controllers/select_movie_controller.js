@@ -47,6 +47,7 @@ export default class extends Controller {
     if (!this.selectedMovies.includes(movieId)) {
       this.selectedMovies.push(movieId);
       this.displaySelectedMovie(movieId, movieTitle);
+      this.inputTarget.classList.add("m-2");
       this.updateHiddenField();
     }
   }
@@ -112,5 +113,10 @@ export default class extends Controller {
     if (tag) tag.remove();
 
     this.updateHiddenField();
+
+    if (this.selectedMovies.length === 0) {
+      this.inputTarget.classList.remove("m-2");
+      this.hiddenFieldTarget.value = "";
+    }
   }
 }
