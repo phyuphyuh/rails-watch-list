@@ -56,7 +56,7 @@ class MovieSearchService
     if movie.nil?
       Movie.create(
         title: result['title'],
-        poster_url: "https://image.tmdb.org/t/p/w500#{result['poster_path']}",
+        poster_url: result['poster_path'].present? ? "https://image.tmdb.org/t/p/w500#{result['poster_path']}" : ActionController::Base.helpers.asset_path('no_image.jpg'),
         rating: result['vote_average'],
         overview: result['overview']
       )

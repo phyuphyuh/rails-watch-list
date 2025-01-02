@@ -1,27 +1,30 @@
 .movie-search-card {
-  background-size: cover;
-  background-position: center;
-  height: 150px;
-  width: 94px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  // background-size: cover;
+  // background-position: center;
+  height: 248px;
+  width: 104px;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  color: $lighter-jet;
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   position: relative;
-  overflow: hidden;
+  // overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 156px;
+    object-fit: cover;
+    overflow: hidden;
+  }
 
   h3 {
-    font-family: "Outfit", "Dongle", "sans-serif";
-    font-size: 18px;
-    text-align: center;
+    font-size: 14px;
   }
 }
 
-.cards {
+.search-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 16px;
@@ -31,7 +34,7 @@
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
-  .cards {
+  .search-cards {
     grid-template-columns: repeat(2, 1fr);
     padding: 8px;
   }
@@ -39,21 +42,21 @@
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
-  .cards {
+  .search-cards {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
-  .cards {
+  .search-cards {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
-  .cards {
+  .search-cards {
     grid-template-columns: repeat(5, 1fr);
   }
 }
