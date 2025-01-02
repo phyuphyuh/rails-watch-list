@@ -48,7 +48,6 @@ export default class extends Controller {
       this.selectedMovies.push(movieId);
       this.displaySelectedMovie(movieId, movieTitle);
       this.updateHiddenField();
-      alert("Movie added!");
     }
   }
 

@@ -27,12 +27,12 @@
   border: none;
   outline: none;
   border-radius: 0;
-  border-bottom: 1px solid $lighter-jet;
+  border: 1px solid $ruddy-blue;
   font-family: "Cutive Mono", serif;
   background-color: transparent;
 
   &:focus {
-    border-bottom: 1px solid $subtitleyellow;
+    border: 1px solid $subtitleyellow;
   }
 }
 
@@ -40,6 +40,7 @@
   font-family: "Cutive Mono", serif;
   background-color: transparent;
   border-radius: 0;
+  border: 1px solid $ruddy-blue;
 }
 
 .image-preview img {
@@ -54,13 +55,14 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  border: 1px solid #ccc;
-  padding: 5px;
-  border-radius: 4px;
+  // border: 1px solid $ruddy-blue;
+  border: none;
+  border-radius: 0;
   font-family: "Cutive Mono", serif;
 
   input {
     flex: 1;
+    border: 1px solid $ruddy-blue;
 
     &:focus {
       border: 1px solid $subtitleyellow;
@@ -71,13 +73,15 @@
 .selected-movies-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 4px;
 }
 
 .movie-tag {
-  background-color: #e0e0e0;
-  border-radius: 12px;
-  padding: 5px 10px;
+  color: $blue;
+  background-color: $light-yellow;
+  border: 1px solid $blue;
+  border-radius: 8px;
+  padding: 4px 8px;
   display: flex;
   align-items: center;
   font-size: 14px;
@@ -85,13 +89,13 @@
   button {
     background: none;
     border: none;
-    color: #555;
+    color: $blue;
     font-size: 12px;
     margin-left: 5px;
     cursor: pointer;
 
     &:hover {
-      color: red;
+      color: $airforce-blue;
     }
   }
 }
