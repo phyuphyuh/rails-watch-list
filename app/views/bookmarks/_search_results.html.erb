@@ -1,5 +1,4 @@
 <%# <div data-search-movie-target="results"> %>
-<%# <% if params[:query].present? %>
 <% if movies.present? %>
   <h5><%= pluralize movies.count, 'result' %> for <code><%= params[:query] %></code></h5>
   <div class="cards">

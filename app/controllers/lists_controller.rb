@@ -18,8 +18,6 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
-    # query = params[:query]
-    # @movies = query.present? ? MovieSearchService.new(query: query).call : []
     @movies = params[:query].present? ? MovieSearchService.new(query: params[:query]).call : []
 
     respond_to do |format|

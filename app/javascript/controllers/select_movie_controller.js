@@ -52,8 +52,6 @@ export default class extends Controller {
 
   saveTemporaryMovies(event) {
     event.preventDefault();
-    console.log("Saving temporary movies..."); // Debugging
-    console.log("Selected movies:", this.selectedMovies); // See the movie IDs
 
     this.updateHiddenField();
 
@@ -88,5 +86,4 @@ export default class extends Controller {
       })
       .catch(error => console.error("Error adding movie:", error));
   }
-
 }

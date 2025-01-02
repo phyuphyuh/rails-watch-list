@@ -52,12 +52,6 @@ class MovieSearchService
     url = "https://api.themoviedb.org/3/movie/#{@api_id}?api_key=#{@api_key}"
     json = URI.open(url).read
     result = JSON.parse(json)
-    # Movie.find_or_create_by(api_id: result['id']) do |movie|
-    #   movie.title = result['title']
-    #   movie.poster_url = "https://image.tmdb.org/t/p/w500#{result['poster_path']}"
-    #   movie.rating = result['vote_average']
-    #   movie.overview = result['overview']
-    # end
     movie = Movie.find_by(api_id: result['id'])
     if movie.nil?
       Movie.create(

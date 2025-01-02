@@ -19,11 +19,6 @@ class BookmarksController < ApplicationController
           bookmark.comment = bookmark_params[:comment]
         end
       end
-
-      # if movie
-      #   bookmark = @list.bookmarks.find_by(movie: movie)
-      #   bookmark.create(bookmark_params.merge(movie: movie))
-      # end
     end
 
     respond_to do |format|
