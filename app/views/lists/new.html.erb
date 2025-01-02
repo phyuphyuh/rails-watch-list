@@ -7,8 +7,8 @@
           <%= simple_form_for @list, url: lists_path, method: :post, html: { multipart: true, data: { controller: "select-movie", action: "submit->select-movie#saveTemporaryMovies", select_movie_target: "form" } } do |f| %>
             <div data-controller="form-img-preview">
               <div class="form-inputs">
-                <%= f.input :name, label: "NAME", placeholder: "name of the list", input_html: { class: "custom-input" } %>
-                <%= f.input :description, label: "DESCRIPTION", placeholder: "add a description", input_html: { class: "custom-input" } %>
+                <%= f.input :name, label: false, placeholder: "name of the list", input_html: { class: "custom-input" } %>
+                <%= f.input :description, label: false, placeholder: "add a description", input_html: { class: "custom-input" } %>
                 <%= f.input :photo, as: :file,
                         label: "COVER IMAGE",
                         input_html: { data: { "form-img-preview-target": "input", action: "form-img-preview#preview" }, accept: "image/*", class: "file-input" }%>
@@ -20,7 +20,7 @@
             <label for="select-movie-input">ADD MOVIES</label>
             <input type="text"
                       id="select-movie-input"
-                      class="form-control"
+                      class="form-control custom-input"
                       placeholder="Type a movie title..."
                       data-action="keyup->select-movie#search"
             data-select-movie-target="input">

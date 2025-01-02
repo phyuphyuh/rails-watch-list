@@ -20,7 +20,10 @@ export default class extends Controller {
 
     const query = encodeURIComponent(this.inputTarget.value.trim());
     // const query = this.inputTarget.value.split(' ').join('+')
-    if (!query) return;
+    if (query === "") {
+      this.resultsTarget.innerHTML = "";
+      return;
+    }
 
     // const url = `/lists/new?query=${query}`;
     const url =  `${window.location.pathname}?query=${query}`
