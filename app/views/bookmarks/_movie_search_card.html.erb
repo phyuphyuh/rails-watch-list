@@ -1,11 +1,13 @@
-<div class="movie-search-card-wrapper d-flex flex-column" data-movie-id="<%= movie.api_id %>">
+<div class="movie-search-card-wrapper d-flex flex-column" data-movie-id="<%= movie.api_id %>" data-movie-title="<%= movie.title %>">
   <div class="movie-search-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_path(movie.poster_url || asset_path('no_image.jpg')) %>)">
     <h3><%= movie.title %></h3>
   </div>
   <div class="text-center">
-    <button class="btn"
+    <button type="button"
+            class="btn"
             data-action="click->select-movie#addMovie"
       data-movie-id="<%= movie.api_id %>"
+      data-movie-title="<%= movie.title %>"
       >
       Add
     </button>

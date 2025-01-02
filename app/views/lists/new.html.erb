@@ -18,12 +18,18 @@
             </div>
             <!-- Movie Search Section -->
             <label for="select-movie-input">ADD MOVIES</label>
-            <input type="text"
+            <div class="select-movie-container">
+              <div id="selected-movies"
+                  class="selected-movies-container"
+                  data-select-movie-target="selectedMovies">
+              </div>
+              <input type="text"
                       id="select-movie-input"
-                      class="form-control custom-input"
+                      class="form-control"
                       placeholder="Type a movie title..."
                       data-action="keyup->select-movie#search"
-            data-select-movie-target="input">
+              data-select-movie-target="input">
+            </div>
             <%= hidden_field_tag "movie_ids", "", data: { select_movie_target: "hiddenField" } %>
             <div data-select-movie-target="results">
               <%= render 'bookmarks/search_results', movies: @movies %>

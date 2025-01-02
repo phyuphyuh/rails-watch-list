@@ -1,8 +1,9 @@
 import { Controller } from "@hotwired/stimulus"
 import debounce from "lodash.debounce";
+console.log(debounce);
 
 export default class extends Controller {
-  static targets = ["input", "results", "hiddenField", "form"];
+  static targets = ["input", "results", "hiddenField", "form", "selectedMovies"];
 
   connect() {
     console.log("connected!");
@@ -41,9 +42,11 @@ export default class extends Controller {
     event.preventDefault();
 
     const movieId = event.currentTarget.dataset.movieId;
+    const movieTitle = event.currentTarget.dataset.movieTitle;
 
     if (!this.selectedMovies.includes(movieId)) {
       this.selectedMovies.push(movieId);
+      this.displaySelectedMovie(movieId, movieTitle);
       this.updateHiddenField();
       alert("Movie added!");
     }
@@ -88,5 +91,27 @@ export default class extends Controller {
         alert("Movie added to the list!");
       })
       .catch(error => console.error("Error adding movie:", error));
+  }
+
+  displaySelectedMovie(movieId, movieTitle) {
+    const tag = document.createElement("span");
+    tag.className = "movie-tag";
+    tag.dataset.movieId = movieId;
+    tag.innerHTML = `
+      ${movieTitle}
+      <button type="button" data-movie-id="${movieId}" data-action="click->select-movie#removeMovie">x</button>
+    `;
+    this.selectedMoviesTarget.appendChild(tag);
+  }
+
+  removeMovie(event) {
+    const movieId = event.currentTarget.dataset.movieId;
+
+    this.selectedMovies = this.selectedMovies.filter(id => id !== movieId);
+
+    const tag = this.selectedMoviesTarget.querySelector(`[data-movie-id="${movieId}"]`);
+    if (tag) tag.remove();
+
+    this.updateHiddenField();
   }
 }
