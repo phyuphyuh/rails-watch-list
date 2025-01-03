@@ -24,18 +24,18 @@ class ListsController < ApplicationController
       format.html
       format.text { render partial: 'bookmarks/search_results', locals: { movies: @movies }, formats: [:html] }
     end
-
   end
 
   def create
-    Rails.logger.debug "Movie IDs from params: #{params[:movie_ids]}"
-
     @list = List.new(list_params)
+    @selected_movie_ids = params[:movie_ids]&.split(",") || []
 
     if @list.save
-      add_temporary_bookmarks_to_list(@list, params[:movie_ids]&.split(','))
+      add_temporary_bookmarks_to_list(@list, @selected_movie_ids)
       redirect_to list_path(@list)
     else
+      @movies = params[:query].present? ? MovieSearchService.new(query: params[:query]).call : []
+      @current_action = "new"
       render 'new', status: :unprocessable_entity
     end
   end

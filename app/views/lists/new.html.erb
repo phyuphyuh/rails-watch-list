@@ -5,6 +5,7 @@
         <div class="form">
           <h2>NEW LIST</h2>
           <%= simple_form_for @list, url: lists_path, method: :post, html: { multipart: true, data: { controller: "select-movie", action: "submit->select-movie#saveTemporaryMovies", select_movie_target: "form" } } do |f| %>
+            <%= hidden_field_tag "current_action", @current_action || "new", id: "current-action" %>
             <div data-controller="form-img-preview">
               <div class="form-inputs">
                 <%= f.input :name, label: "NAME", input_html: { class: "custom-input" } %>
@@ -22,6 +23,17 @@
               <div id="selected-movies"
                   class="selected-movies-container"
                   data-select-movie-target="selectedMovies">
+                <% if @selected_movie_ids.present? %>
+                  <% @selected_movie_ids.each do |movie_id| %>
+                    <% movie = Movie.find_by(api_id: movie_id) %>
+                    <% if movie %>
+                      <span class="movie-tag" data-movie-id="<%= movie_id %>">
+                        <%= movie.title %>
+                        <button type="button" data-action="click->select-movie#removeMovie" data-movie-id="<%= movie_id %>">x</button>
+                      </span>
+                    <% end %>
+                  <% end %>
+                <% end %>
               </div>
               <input type="text"
                       id="select-movie-input"
@@ -30,7 +42,7 @@
                       data-action="keyup->select-movie#search"
               data-select-movie-target="input">
             </div>
-            <%= hidden_field_tag "movie_ids", "", data: { select_movie_target: "hiddenField" } %>
+            <%= hidden_field_tag "movie_ids", @selected_movie_ids&.join(","), data: { select_movie_target: "hiddenField" } %>
             <div data-select-movie-target="results">
               <%= render 'bookmarks/search_results', movies: @movies %>
             </div>

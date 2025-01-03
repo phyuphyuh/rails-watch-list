@@ -10,6 +10,13 @@ export default class extends Controller {
     this.selectedMovies = [];
     this.debouncedSearch = debounce(this.search.bind(this), 300);
     this.inputTarget.addEventListener("input", this.debouncedSearch);
+
+    if (this.hiddenFieldTarget.value) {
+      this.selectedMovies = this.hiddenFieldTarget.value.split(",");
+      this.selectedMovies.forEach((movieId) => {
+        this.displaySelectedMovie(movieId, movieTitle);
+      });
+    }
   }
 
   disconnect() {
@@ -21,14 +28,15 @@ export default class extends Controller {
 
     const query = encodeURIComponent(this.inputTarget.value.trim());
     // const query = this.inputTarget.value.split(' ').join('+')
-    if (query === "") {
+    if (query.length === 0) {
       this.resultsTarget.innerHTML = "";
       return;
     }
 
     // const url = `/lists/new?query=${query}`;
-    const url =  `${window.location.pathname}?query=${query}`
-    console.log(url);
+    // const url =  `${window.location.pathname}?query=${query}`
+    const currentAction = document.getElementById("current-action").value;
+    const url = currentAction === "new" ? `/lists/new?query=${query}` : `${window.location.pathname}?query=${query}`;
 
     fetch(url, { headers: { 'Accept': 'text/plain' } })
       .then(response => response.text())
