@@ -56,8 +56,10 @@ class MovieSearchService
     movie = Movie.find_by(api_id: result['id'])
     if movie.nil?
       Movie.create(
+        api_id: result['id'],
         title: result['title'],
-        poster_url: result['poster_path'].present? ? "https://image.tmdb.org/t/p/w500#{result['poster_path']}" : ActionController::Base.helpers.asset_path('no_image.jpg'),
+        release_date: result['release_date']&.split('-')&.first,
+        poster_url: "https://image.tmdb.org/t/p/w500#{result['poster_path']}",
         rating: result['vote_average'],
         overview: result['overview']
       )

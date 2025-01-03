@@ -1,9 +1,13 @@
 <div class="movie-search-card d-flex flex-column justify-content-between text-center" data-movie-id="<%= movie.api_id %>" data-movie-title="<%= movie.title %>">
-  <%= image_tag movie.poster_url %>
+  <% if movie.poster_url %>
+    <%= image_tag movie.poster_url %>
+  <% else %>
+    <%= image_tag "no_image.jpg" %>
+  <% end %>
   <h3><%= movie.title %></h3>
   <button type="button"
-            class="add-movie-btn"
-            data-action="click->select-movie#addMovie"
+          class="add-movie-btn"
+          data-action="click->select-movie#addMovie"
     data-movie-id="<%= movie.api_id %>"
     data-movie-title="<%= movie.title %>"
     >

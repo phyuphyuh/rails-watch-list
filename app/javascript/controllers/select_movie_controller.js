@@ -8,7 +8,7 @@ export default class extends Controller {
   connect() {
     console.log("connected!");
     this.selectedMovies = [];
-    this.debouncedSearch = debounce(this.search.bind(this), 300);
+    this.debouncedSearch = debounce(this.search.bind(this), 500);
     this.inputTarget.addEventListener("input", this.debouncedSearch);
 
     if (this.hiddenFieldTarget.value) {
