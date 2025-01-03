@@ -4,6 +4,7 @@
   // background-size: cover;
   // background-position: top;
   background-attachment: fixed;
+  margin-top: -40px;
   padding-top: 40px;
   height: 60vh;
   text-align: center;
@@ -15,13 +16,6 @@
   position: relative;
   clip-path: inset(0);
   white-space: nowrap;
-
-  .home-nav {
-    width: 240px;
-    position: sticky;
-    top: 40px;
-    z-index: 10;
-  }
 
   h1 {
     color: $blue;

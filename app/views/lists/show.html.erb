@@ -1,29 +1,18 @@
-<div class="container">
-  <%# <div class="row justify-content-around">
-    <div class="col-lg-12"> %>
-  <div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @list.photo.attached? ? cl_image_path(@list.photo.key) : image_path('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPQDYau3Hs4-xw1i8jVSUY4BlF4FLmg8lQqg&usqp=CAU') %>)">
-    <div class="container">
-      <h1><%= @list.name %></h1>
-    </div>
+<div class="d-flex">
+  <div class="list-info d-flex flex-column">
+    <% if @list.photo.attached? %>
+      <%= cl_image_tag @list.photo.key %>
+    <% end %>
+    <h1><%= @list.name %></h1>
+    <p><%= @list.description %></p>
   </div>
-  <div class="bookmark-header row justify-content-around mt-3">
-    <div class="bookmark-form col-lg-6">
-      <h4>Add a movie to this list</h4>
-      <%= simple_form_for [@list, @bookmark] do |f| %>
-        <%= f.association :movie, as: :select, :input_html => { :class => "form-select-sm" } %>
-        <%= f.input :comment, :input_html => { :class => "form-control-sm" } %>
-        <%= f.submit class: 'submit-btn' %>
-      <% end %>
-    </div>
-  </div>
-  <div class="cards my-5">
+  <div class="list-bookmarks search-cards">
     <% @list.bookmarks.each do |bookmark| %>
       <%= render "lists/card_movie", bookmark: bookmark %>
       <%= render "lists/modal", bookmark: bookmark %>
     <% end %>
   </div>
   <%# </div> %>
-  <%= link_to "Back to all lists", lists_path, class: 'text-decoration-none my-5' %>
   <%# <%= link_to "Add a movie", new_list_bookmark_path(@list) %>
   <%# </div> %>
 </div>

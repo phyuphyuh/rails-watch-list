@@ -34,6 +34,7 @@ class MovieSearchService
           Movie.create(
             api_id: result['id'],
             title: result['title'],
+            release_date: result['release_date']&.split('-')&.first,
             poster_url: "https://image.tmdb.org/t/p/w500#{result['poster_path']}",
             rating: result['vote_average'],
             overview: result['overview'] || "No overview available."
