@@ -32,7 +32,7 @@ class ListsController < ApplicationController
     @selected_movie_ids = params[:movie_ids]&.split(",") || []
 
     if @list.save
-      add_temporary_bookmarks_to_list(@list, @selected_movie_ids)
+      add_selected_movies_to_list_as_bookmarks(@list, @selected_movie_ids)
       redirect_to list_path(@list)
     else
       @movies = params[:query].present? ? MovieSearchService.new(query: params[:query]).call : []
@@ -56,7 +56,7 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
   end
 
-  def add_temporary_bookmarks_to_list(list, movie_ids)
+  def add_selected_movies_to_list_as_bookmarks(list, movie_ids)
     return unless movie_ids.present?
 
     movie_ids.each do |movie_id|
