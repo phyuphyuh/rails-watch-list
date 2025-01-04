@@ -1,16 +1,7 @@
 <div class="card-movie" role="button" data-bs-toggle="modal" data-bs-target="#<%= bookmark.movie.id %>">
-  <%= image_tag bookmark.movie.poster_url, alt: "#{bookmark.movie.title}" %>
-  <div class="card-movie-infos">
-    <div>
-      <h2><%= bookmark.movie.title %></h2>
-      <p><%= bookmark.movie.release_date %></p>
-      <hr>
-      <p class="overflow-ellipsis"><%= bookmark.movie.overview %></p>
-      <p><%= bookmark.movie.rating.round(1) %></p>
-    </div>
-    <div class="card-movie-comment-section">
-      <p class="card-movie-comment"><%= bookmark.comment %></p>
-      <%= link_to "Delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Delete bookmark?"} %>
-    </div>
-  </div>
+  <% if bookmark.movie.poster_url %>
+    <%= image_tag bookmark.movie.poster_url, alt: "#{bookmark.movie.title}" %>
+  <% else %>
+    <%= image_tag "no_image.jpg" %>
+  <% end %>
 </div>

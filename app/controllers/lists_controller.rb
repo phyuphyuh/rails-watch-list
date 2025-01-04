@@ -7,8 +7,9 @@ class ListsController < ApplicationController
   end
 
   def show
-    @bookmark = Bookmark.new
+    # @bookmark = Bookmark.new
     @movies = params[:query].present? ? MovieSearchService.new(query: params[:query]).call : []
+    @bookmarks = @list.bookmarks.includes(:movie)
 
     respond_to do |format|
       format.html

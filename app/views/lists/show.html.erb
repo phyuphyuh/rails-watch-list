@@ -1,12 +1,12 @@
-<div class="d-flex">
-  <div class="list-info d-flex flex-column">
+<div class="list-show d-flex">
+  <div class="list-info d-flex flex-column p-2">
     <% if @list.photo.attached? %>
       <%= cl_image_tag @list.photo.key %>
     <% end %>
     <h1><%= @list.name %></h1>
     <p><%= @list.description %></p>
   </div>
-  <div class="list-bookmarks search-cards">
+  <div class="list-bookmarks movie-cards py-2 px-3">
     <% @list.bookmarks.each do |bookmark| %>
       <%= render "lists/card_movie", bookmark: bookmark %>
       <%= render "lists/modal", bookmark: bookmark %>

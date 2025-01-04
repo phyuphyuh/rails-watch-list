@@ -4,6 +4,7 @@
       <div class="modal-header">
         <%= image_tag bookmark.movie.poster_url, alt: "#{bookmark.movie.title}", class: "modal-title object-fit-contain", width: 200, height: 200 %>
         <h1 class="modal-title fs-5" id="exampleModalLabel"><%= bookmark.movie.title %></h1>
+        <p><%= bookmark.movie.release_date %></p>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
