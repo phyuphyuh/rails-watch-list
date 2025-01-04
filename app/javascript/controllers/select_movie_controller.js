@@ -112,7 +112,6 @@ export default class extends Controller {
       .then(response => response.json())
       .then((data) => {
         this.displayBookmarks(data.bookmarks);
-        alert("Movie added to the list!");
       })
       .catch(error => console.error("Error adding movie:", error));
   }
