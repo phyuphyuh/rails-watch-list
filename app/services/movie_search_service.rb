@@ -29,19 +29,15 @@ class MovieSearchService
 
       results.map do |result|
         next if result['id'].nil?
-        movie = Movie.find_by(api_id: result['id'])
-        if movie.nil?
-          Movie.create(
-            api_id: result['id'],
-            title: result['title'],
-            release_date: result['release_date']&.split('-')&.first,
-            poster_url: "https://image.tmdb.org/t/p/w500#{result['poster_path']}",
-            rating: result['vote_average'],
-            overview: result['overview'] || "No overview available."
-          )
-        else
-          movie
-        end
+        movie = Movie.find_or_initialize_by(api_id: result['id'])
+        movie.update(
+          title: result['title'],
+          release_date: result['release_date']&.split('-')&.first,
+          poster_url: "https://image.tmdb.org/t/p/w500#{result['poster_path']}",
+          rating: result['vote_average'],
+          overview: result['overview'] || "No overview available."
+        )
+        movie
       end
     rescue OpenURI::HTTPError => e
       Rails.logger.error("Error fetching movie search: #{e.message}")
@@ -53,19 +49,16 @@ class MovieSearchService
     url = "https://api.themoviedb.org/3/movie/#{@api_id}?api_key=#{@api_key}"
     json = URI.open(url).read
     result = JSON.parse(json)
-    movie = Movie.find_by(api_id: result['id'])
-    if movie.nil?
-      Movie.create(
-        api_id: result['id'],
-        title: result['title'],
-        release_date: result['release_date']&.split('-')&.first,
-        poster_url: "https://image.tmdb.org/t/p/w500#{result['poster_path']}",
-        rating: result['vote_average'],
-        overview: result['overview']
-      )
-    else
-      movie
-    end
+    movie = Movie.find_or_initialize_by(api_id: result['id'])
+    movie.update(
+      api_id: result['id'],
+      title: result['title'],
+      release_date: result['release_date']&.split('-')&.first,
+      poster_url: "https://image.tmdb.org/t/p/w500#{result['poster_path']}",
+      rating: result['vote_average'],
+      overview: result['overview']
+    )
+    movie
   rescue OpenURI::HTTPError => e
     Rails.logger.error("Error fetching movie details: #{e.message}")
     nil

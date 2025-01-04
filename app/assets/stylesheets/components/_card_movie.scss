@@ -1,6 +1,7 @@
 .card-movie {
   width: 131px;
   height: 193px;
+  margin-bottom: 8px;
 
   img {
     width: 100%;
@@ -81,10 +82,9 @@
 // }
 
 .movie-cards {
-  display: grid;
-  // grid-template-columns: repeat(6, 1fr);
-  grid-template-columns: repeat(auto-fill, minmax(131px, 1fr));
-  grid-gap: 4px;
+  // display: grid;
+  // grid-template-columns: repeat(auto-fill, minmax(131px, 1fr));
+  grid-gap: 8px;
 }
 
 // // Smallest device

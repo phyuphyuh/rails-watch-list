@@ -9,29 +9,17 @@ class BookmarksController < ApplicationController
     # @bookmark = Bookmark.new(bookmark_params)
     # @bookmark.list = @list
 
-    movie_ids = params[:movie_ids].is_a?(Array) ? [params[:movie_id]] : params[:movie_ids].to_s.split(',')
+    movie_ids = params[:movie_ids].is_a?(Array) ? [params[:movie_ids]] : params[:movie_ids].to_s.split(',')
 
     movie_ids.each do |movie_id|
       movie = Movie.find_by(api_id: movie_id) || MovieSearchService.new(api_id: movie_id).call.first
 
       if movie
-        @list.bookmarks.find_or_create_by(movie: movie)
+        # @list.bookmarks.find_or_create_by(movie: movie)
+        bookmark = Bookmark.find_by(list: @list, movie: movie) || Bookmark.new(list: @list, movie: movie)
+        bookmark.save
       end
     end
-      # if movie
-      #   bookmark = @list.bookmarks.find_by(movie: movie)
-      #   if bookmark
-      #     @bookmark = bookmark
-      #   else
-      #     @bookmark = Bookmark.new(movie: movie, list: @list)
-      #   end
-
-      #   if @bookmark.save
-      #     next
-      #   else
-      #     render 'lists/show', status: :unprocessable_entity
-      #   end
-      # end
 
     respond_to do |format|
       format.html { redirect_to list_path(@list) }

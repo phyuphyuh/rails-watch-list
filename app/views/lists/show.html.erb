@@ -6,7 +6,7 @@
     <h1><%= @list.name %></h1>
     <p><%= @list.description %></p>
   </div>
-  <div class="list-bookmarks movie-cards py-2 px-3">
+  <div class="list-bookmarks movie-cards py-2 px-3 d-flex flex-wrap justify-content-around align-content-start">
     <% @list.bookmarks.each do |bookmark| %>
       <%= render "lists/card_movie", bookmark: bookmark %>
       <%= render "lists/modal", bookmark: bookmark %>
