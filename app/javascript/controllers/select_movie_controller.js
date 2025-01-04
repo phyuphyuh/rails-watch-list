@@ -36,6 +36,7 @@ export default class extends Controller {
     // const url = `/lists/new?query=${query}`;
     // const url =  `${window.location.pathname}?query=${query}`
     const currentAction = document.getElementById("current-action").value;
+    console.log(currentAction);
     const url = currentAction === "new" ? `/lists/new?query=${query}` : `${window.location.pathname}?query=${query}`;
 
     fetch(url, { headers: { 'Accept': 'text/plain' } })
@@ -51,20 +52,32 @@ export default class extends Controller {
 
     const movieId = event.currentTarget.dataset.movieId;
     const movieTitle = event.currentTarget.dataset.movieTitle;
+    const currentAction = document.getElementById("current-action").value;
 
-    if (!this.selectedMovies.includes(movieId)) {
-      this.selectedMovies.push(movieId);
-      this.displaySelectedMovie(movieId, movieTitle);
-      this.inputTarget.classList.add("m-2");
-      this.updateHiddenField();
+    if (currentAction === "new") {
+      // add as tags
+      if (!this.selectedMovies.includes(movieId)) {
+        this.selectedMovies.push(movieId);
+        this.displaySelectedMovie(movieId, movieTitle);
+        this.inputTarget.classList.add("m-2");
+        this.updateHiddenField();
+      }
+    } else if (currentAction === "show") {
+      // directly as bookmarks
+      const listId = event.currentTarget.dataset.listId;
+      console.log(listId);
+      if (listId && movieId) {
+        this.addBookmarkToList(listId, [movieId]);
+      }
     }
+
   }
 
   updateHiddenField() {
     this.hiddenFieldTarget.value = this.selectedMovies.join(",");
   }
 
-  saveTemporaryMovies(event) {
+  saveSelectedMovies(event) {
     event.preventDefault();
 
     this.updateHiddenField();
@@ -83,22 +96,40 @@ export default class extends Controller {
   }
 
   addBookmarkToList(listId, movieIds) {
-    const url = `lists/${listId}/bookmarks`;
+    // const url = `lists/${listId}/bookmarks`;
+    const url = `${window.location.pathname}/bookmarks`;
+    const csrfToken = document.querySelector("meta[name='csrf-token']").content;
 
     fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json",
+        "X-CSRF-Token": csrfToken,
       },
       body: JSON.stringify({ movie_ids: movieIds })
     })
       .then(response => response.json())
       .then((data) => {
-        console.log(data);
+        this.displayBookmarks(data.bookmarks);
         alert("Movie added to the list!");
       })
       .catch(error => console.error("Error adding movie:", error));
+  }
+
+  displayBookmarks(bookmarks) {
+    const bookmarksContainer = document.querySelector(".list-bookmarks");
+
+    bookmarks.forEach((bookmark) => {
+      const poster = bookmark.movie.poster_url || "/assets/images/no_image.jpg";
+
+      const bookmarkCard = `
+        <div class="card-movie movie-cards">
+          <img src="${poster}" alt="${bookmark.movie.title}">
+        </div>
+      `;
+      bookmarksContainer.insertAdjacentHTML("beforeend", bookmarkCard);
+    })
   }
 
   displaySelectedMovie(movieId, movieTitle) {

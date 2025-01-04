@@ -1,9 +1,18 @@
 .list-show {
   margin: 40px auto;
-  width: 90%;
 }
 
 .list-info {
+  height: 40vh;
+  width: 90%;
+  margin: 0 auto;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  // box-shadow: 0 0 24px 24px $seasalt inset;
+}
+
+.list-bookmark-info {
   width: 30%;
   position: sticky;
   top: 0;

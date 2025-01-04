@@ -11,25 +11,24 @@ class BookmarksController < ApplicationController
 
     movie_ids = params[:movie_ids].is_a?(Array) ? [params[:movie_ids]] : params[:movie_ids].to_s.split(',')
 
+    new_bookmarks = []
+
     movie_ids.each do |movie_id|
       movie = Movie.find_by(api_id: movie_id) || MovieSearchService.new(api_id: movie_id).call.first
 
       if movie
         # @list.bookmarks.find_or_create_by(movie: movie)
         bookmark = Bookmark.find_by(list: @list, movie: movie) || Bookmark.new(list: @list, movie: movie)
-        bookmark.save
+        if bookmark.save
+          new_bookmarks << bookmark
+        end
       end
     end
 
-    respond_to do |format|
-      format.html { redirect_to list_path(@list) }
-      format.json { render json: { success: true } }
-    end
-  rescue => e
-    Rails.logger.error("Error adding bookmarks: #{e.message}")
-    respond_to do |format|
-      format.html { render 'lists/show', status: :unprocessable_entity }
-      format.json { render json: { success: false }, status: :unprocessable_entity }
+    if new_bookmarks.any?
+      render json: { success: true, bookmarks: new_bookmarks.as_json(include: { movie: { only: [:title, :poster_url, :release_date, :overview, :rating] } }) }
+    else
+      render json: { success: false }, status: :unprocessable_entity
     end
   end
 
