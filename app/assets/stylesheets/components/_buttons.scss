@@ -50,3 +50,16 @@
     background-color: transparent;
   }
 }
+
+.add-bookmark-btn {
+  color: $lighter-jet;
+  background-color: $nyanza;
+  border: 1px solid $lighter-jet;
+  padding: 4px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: transparent;
+  }
+}

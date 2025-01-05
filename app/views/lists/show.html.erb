@@ -4,34 +4,25 @@
     <h1><%= @list.name %></h1>
     <p><%= @list.description %></p>
   </div>
-  <div class="add-movie">
-    <button>ADD MOVIE</button>
-    <div class="select-movie-container" data-controller="select-movie">
-      <div id="selected-movies"
-          class="selected-movies-container"
-          data-select-movie-target="selectedMovies">
-        <% if params[:movie_ids].present? %>
-          <% params[:movie_ids].split(",").each do |movie_id| %>
-            <% movie = Movie.find_by(api_id: movie_id) %>
-            <% if movie %>
-              <span class="movie-tag" data-movie-id="<%= movie_id %>">
-                <%= movie.title %>
-                <button type="button" data-action="click->select-movie#removeMovie" data-movie-id="<%= movie_id %>">x</button>
-              </span>
-            <% end %>
-          <% end %>
-        <% end %>
-      </div>
-      <input type="text"
+  <div class="add-movie container d-flex flex-column align-items-center" data-controller="show-search">
+    <button type="button"
+            class="add-bookmark-btn"
+            data-action="click->show-search#displaySearch">
+      ADD MOVIE
+    </button>
+    <div class="search-section d-none" data-show-search-target="searchSection">
+      <div class="select-movie-container" data-controller="select-movie">
+        <input type="text"
             id="select-movie-input"
-            class="form-control"
+            class="form-control search-movie-input-show my-2"
             placeholder="Type a movie title..."
             data-action="keyup->select-movie#search"
-      data-select-movie-target="input">
-      <%= hidden_field_tag "movie_ids", params[:movie_ids]&.join(","), data: { select_movie_target: "hiddenField" } %>
-      <%= hidden_field_tag "current_action", action_name, id: "current-action" %>
-      <div data-select-movie-target="results">
-        <%= render 'bookmarks/search_results', movies: @movies %>
+        data-select-movie-target="input">
+        <%= hidden_field_tag "movie_ids", params[:movie_ids]&.join(","), data: { select_movie_target: "hiddenField" } %>
+        <%= hidden_field_tag "current_action", action_name, id: "current-action" %>
+        <div data-select-movie-target="results">
+          <%= render 'bookmarks/search_results', movies: @movies %>
+        </div>
       </div>
     </div>
   </div>
