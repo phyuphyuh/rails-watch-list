@@ -29,6 +29,10 @@
 .add-movie {
 }
 
-.form-control.search-movie-input-show {
+.search-section {
+  transition: 0.3s ease-in;
+}
+
+.add-movie.active .search-section {
 
 }

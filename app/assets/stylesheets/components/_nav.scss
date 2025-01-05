@@ -5,4 +5,8 @@
   position: sticky;
   top: 24px;
   z-index: 10;
+
+  .custom-btn {
+    transition: background-color 0.3s ease;
+  }
 }

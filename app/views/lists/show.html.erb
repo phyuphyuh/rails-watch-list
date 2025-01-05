@@ -15,9 +15,9 @@
         <input type="text"
             id="select-movie-input"
             class="form-control search-movie-input-show my-2"
-            placeholder="Type a movie title..."
             data-action="keyup->select-movie#search"
-        data-select-movie-target="input">
+        data-select-movie-target="input"
+        data-show-search-target="searchInput">
         <%= hidden_field_tag "movie_ids", params[:movie_ids]&.join(","), data: { select_movie_target: "hiddenField" } %>
         <%= hidden_field_tag "current_action", action_name, id: "current-action" %>
         <div data-select-movie-target="results">
