@@ -110,6 +110,7 @@ export default class extends Controller {
     })
       .then(response => response.json())
       .then((data) => {
+        console.log("Bookmarks received from server:", data.bookmarks);
         this.displayBookmarks(data.bookmarks);
       })
       .catch(error => console.error("Error adding movie:", error));
@@ -120,7 +121,7 @@ export default class extends Controller {
 
     bookmarks.forEach((bookmark) => {
       const existingCard = bookmarksContainer.querySelector(`[data-movie-id="${bookmark.movie.api_id}"]`);
-
+      console.log(existingCard);
       if (!existingCard) {
         const poster = bookmark.movie.poster_url || "/assets/images/no_image.jpg";
 

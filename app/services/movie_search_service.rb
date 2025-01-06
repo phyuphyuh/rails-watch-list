@@ -27,10 +27,11 @@ class MovieSearchService
       json = URI.open(url).read
       results = JSON.parse(json)['results']
 
-      results.map do |result|
+      results.first(5).map do |result|
         next if result['id'].nil?
         movie = Movie.find_or_initialize_by(api_id: result['id'])
         movie.update(
+          api_id: result['id'],
           title: result['title'],
           release_date: result['release_date']&.split('-')&.first,
           poster_url: "https://image.tmdb.org/t/p/w500#{result['poster_path']}",

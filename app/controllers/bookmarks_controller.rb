@@ -10,6 +10,7 @@ class BookmarksController < ApplicationController
     # @bookmark.list = @list
 
     movie_ids = params[:movie_ids].is_a?(Array) ? [params[:movie_ids]] : params[:movie_ids].to_s.split(',')
+    # movie_ids = params[:movie_ids]&.split(",")
 
     new_bookmarks = []
 
@@ -19,14 +20,14 @@ class BookmarksController < ApplicationController
       if movie
         # @list.bookmarks.find_or_create_by(movie: movie)
         bookmark = Bookmark.find_by(list: @list, movie: movie) || Bookmark.new(list: @list, movie: movie)
-        if bookmark.save
+        if bookmark.new_record? && bookmark.save
           new_bookmarks << bookmark
         end
       end
     end
 
     if new_bookmarks.any?
-      render json: { success: true, bookmarks: new_bookmarks.as_json(include: { movie: { only: [:title, :poster_url, :release_date, :overview, :rating] } }) }
+      render json: { success: true, bookmarks: new_bookmarks.as_json(include: { movie: { only: [:api_id, :title, :poster_url, :release_date, :overview, :rating] } }) }
     else
       render json: { success: false }, status: :unprocessable_entity
     end
