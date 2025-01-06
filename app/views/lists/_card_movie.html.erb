@@ -1,4 +1,4 @@
-<div class="card-movie" role="button" data-bs-toggle="modal" data-bs-target="#<%= bookmark.movie.id %>">
+<div class="card-movie" role="button" data-movie-id="<%= bookmark.movie.api_id %>" data-movie-title="<%= bookmark.movie.title %>" data-bs-toggle="modal" data-bs-target="#<%= bookmark.movie.id %>">
   <% if bookmark.movie.poster_url %>
     <%= image_tag bookmark.movie.poster_url, alt: "#{bookmark.movie.title}" %>
   <% else %>

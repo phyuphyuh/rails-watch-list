@@ -10,6 +10,13 @@
   background-position: center;
   background-attachment: fixed;
   // box-shadow: 0 0 24px 24px $seasalt inset;
+  img {
+    width: 30%;
+    object-fit: contain;
+  }
+  .list-name {
+    padding-right: 16px;
+  }
 }
 
 .list-bookmark-info {

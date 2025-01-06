@@ -70,7 +70,6 @@ export default class extends Controller {
         this.addBookmarkToList(listId, [movieId]);
       }
     }
-
   }
 
   updateHiddenField() {
@@ -120,14 +119,18 @@ export default class extends Controller {
     const bookmarksContainer = document.querySelector(".list-bookmarks");
 
     bookmarks.forEach((bookmark) => {
-      const poster = bookmark.movie.poster_url || "/assets/images/no_image.jpg";
+      const existingCard = bookmarksContainer.querySelector(`[data-movie-id="${bookmark.movie.api_id}"]`);
 
-      const bookmarkCard = `
-        <div class="card-movie movie-cards">
-          <img src="${poster}" alt="${bookmark.movie.title}">
-        </div>
-      `;
-      bookmarksContainer.insertAdjacentHTML("beforeend", bookmarkCard);
+      if (!existingCard) {
+        const poster = bookmark.movie.poster_url || "/assets/images/no_image.jpg";
+
+        const bookmarkCard = `
+          <div class="card-movie movie-cards" data-movie-id="${bookmark.movie.api_id}">
+            <img src="${poster}" alt="${bookmark.movie.title}">
+          </div>
+        `;
+        bookmarksContainer.insertAdjacentHTML("beforeend", bookmarkCard);
+      }
     })
   }
 
