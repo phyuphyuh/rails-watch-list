@@ -16,6 +16,7 @@
   }
   .list-name {
     padding-right: 16px;
+    overflow: scroll;
   }
 }
 
@@ -36,15 +37,28 @@
 
 }
 
-.search-movie-input-show {
+.form-control.search-movie-input-show {
   font-family: "Didact Gothic", "Helvetica", "serif";
+  font-size: 1.3rem;
   width: 320px;
+  color: $seasalt;
+  border: none;
+  border-bottom: 1px solid $subtitleyellow;
+  outline: none;
+  background-color: transparent;
+
+  &:focus {
+    border: none;
+    border-bottom: 1px solid $subtitleyellow;
+  }
+
+
 }
 
 .search-section {
   transition: height 0.5s ease-out;
-  background-color: $cream;
-  padding: 20px 0;
+  background-color: $blue;
+  padding: 16px 0;
   width: 100%;
   height: 0;
   overflow: hidden;
@@ -66,9 +80,13 @@
     top: 26px;
     right: 24px;
     transition: opacity 0.2s ease;
+    color: $lightneonyellow;
+    border-color: $lightneonyellow;
+    font-size: 1.2rem;
+
     &:hover {
-      background-color: $lighter-jet;
-      color: $cream;
+      background-color: $lightneonyellow;
+      color: $blue;
     }
   }
 }
