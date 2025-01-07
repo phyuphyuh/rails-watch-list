@@ -48,19 +48,52 @@
   font-family: "Didact Gothic", "Helvetica", "serif";
 
   &:hover {
-    background-color: transparent;
+    background-color: $lighter-jet;
+    color: $cream;
   }
 }
 
 .add-bookmark-btn {
   color: $lighter-jet;
-  background-color: $nyanza;
+  background-color: transparent;
   border: 1px solid $lighter-jet;
-  padding: 4px 12px;
   border-radius: 8px;
   text-decoration: none;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
 
-  &:hover {
-    background-color: transparent;
+  .btn-icon {
+    position: absolute;
+    transition: transform 0.3s ease, opacity 0.3s ease;
   }
+
+  .btn-text {
+    position: absolute;
+    opacity: 0;
+    white-space: nowrap;
+    transform: translateX(-20px);
+    transition: transform 0.2s, opacity 0.2s;
+  }
+
+  &.expanded {
+    width: 116px;
+    background-color: $lighter-jet;
+    color: $cream;
+
+    .btn-icon {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+
+    .btn-text {
+      opacity: 1;
+      transform: translateX(0px);
+    }
+  }
+
 }

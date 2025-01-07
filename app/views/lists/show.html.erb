@@ -11,17 +11,20 @@
       <%= image_tag 'no_image.jpg' %>
     <% end %>
   </div>
-  <div class="add-movie container d-flex flex-column align-items-center" data-controller="show-search">
+  <div class="add-movie text-center mt-5" data-controller="show-search">
     <button type="button"
             class="add-bookmark-btn"
-            data-action="click->show-search#displaySearch">
-      ADD MOVIE
+            data-action="click->show-search#displaySearch mouseenter->show-search#expand mouseleave->show-search#shrink"
+      data-show-search-target="addButton">
+      <span class="btn-icon"><i class="fa-solid fa-plus"></i></span>
+      <span class="btn-text">ADD MOVIE</span>
     </button>
-    <div class="search-section d-none" data-show-search-target="searchSection">
+    <div class="search-section d-flex align-items-center justify-content-center" data-show-search-target="searchSection">
       <div class="select-movie-container" data-controller="select-movie">
         <input type="text"
             id="select-movie-input"
             class="form-control search-movie-input-show my-2"
+            placeholder="ADD MOVIE"
             data-action="keyup->select-movie#search"
         data-select-movie-target="input"
         data-show-search-target="searchInput">
@@ -31,6 +34,11 @@
           <%= render 'bookmarks/search_results', movies: @movies %>
         </div>
       </div>
+      <button type="button"
+            class="add-bookmark-btn"
+            data-action="click->show-search#closeSearch">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
     </div>
   </div>
   <div class="container">

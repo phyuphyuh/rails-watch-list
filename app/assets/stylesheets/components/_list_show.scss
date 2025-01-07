@@ -1,5 +1,5 @@
 .list-show {
-  margin: 40px auto;
+  margin: 48px auto;
 }
 
 .list-info {
@@ -33,12 +33,25 @@
 }
 
 .add-movie {
+
+}
+
+.search-movie-input-show {
+  font-family: "Didact Gothic", "Helvetica", "serif";
 }
 
 .search-section {
-  transition: 0.3s ease-in;
-}
+  transition: height 0.5s ease;
+  background-color: $cream;
+  padding: 40px;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  position: relative;
+  visibility: hidden;
 
-.add-movie.active .search-section {
-
+  &.active {
+    height: 60vh;
+    visibility: visible;
+  }
 }
