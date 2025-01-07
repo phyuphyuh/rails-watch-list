@@ -19,12 +19,11 @@
       <span class="btn-icon"><i class="fa-solid fa-plus"></i></span>
       <span class="btn-text">ADD MOVIE</span>
     </button>
-    <div class="search-section d-flex align-items-center justify-content-center" data-show-search-target="searchSection">
-      <div class="select-movie-container" data-controller="select-movie">
+    <div class="search-section" data-show-search-target="searchSection">
+      <div class="select-movie-container d-flex flex-column align-content-center justify-content-start" data-controller="select-movie">
         <input type="text"
             id="select-movie-input"
             class="form-control search-movie-input-show my-2"
-            placeholder="ADD MOVIE"
             data-action="keyup->select-movie#search"
         data-select-movie-target="input"
         data-show-search-target="searchInput">
@@ -35,14 +34,15 @@
         </div>
       </div>
       <button type="button"
-            class="add-bookmark-btn"
+            id="close-search-btn"
+            class="add-bookmark-btn ms-2"
             data-action="click->show-search#closeSearch">
         <i class="fa-solid fa-xmark"></i>
       </button>
     </div>
   </div>
   <div class="container">
-    <div class="list-bookmarks movie-cards py-2 d-flex flex-wrap align-content-start">
+    <div class="list-bookmarks movie-cards d-flex flex-wrap align-content-start">
       <%# <% @list.bookmarks.each do |bookmark| %>
         <% @bookmarks.each do |bookmark| %>
           <%= render "lists/card_movie", bookmark: bookmark %>

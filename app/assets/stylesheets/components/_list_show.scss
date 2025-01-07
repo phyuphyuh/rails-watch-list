@@ -38,20 +38,37 @@
 
 .search-movie-input-show {
   font-family: "Didact Gothic", "Helvetica", "serif";
+  width: 320px;
 }
 
 .search-section {
-  transition: height 0.5s ease;
+  transition: height 0.5s ease-out;
   background-color: $cream;
-  padding: 40px;
+  padding: 20px 0;
   width: 100%;
   height: 0;
   overflow: hidden;
   position: relative;
   visibility: hidden;
+  overflow: scroll;
 
   &.active {
-    height: 60vh;
+    height: 53vh;
     visibility: visible;
+  }
+
+  &:not(.active) #close-search-btn {
+    display: none;
+  }
+
+  #close-search-btn {
+    position: absolute;
+    top: 26px;
+    right: 24px;
+    transition: opacity 0.2s ease;
+    &:hover {
+      background-color: $lighter-jet;
+      color: $cream;
+    }
   }
 }
