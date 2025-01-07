@@ -52,7 +52,6 @@
     border-bottom: 1px solid $subtitleyellow;
   }
 
-
 }
 
 .search-section {
@@ -88,5 +87,12 @@
       background-color: $lightneonyellow;
       color: $blue;
     }
+  }
+
+  h5 {
+    color: $seasalt;
+  }
+  code {
+    color: $lightneonyellow;
   }
 }

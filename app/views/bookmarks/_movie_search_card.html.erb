@@ -4,7 +4,9 @@
   <% else %>
     <%= image_tag "no_image.jpg" %>
   <% end %>
-  <p><%= movie.title %></p>
+  <div class="search-card-title">
+    <h3><%= movie.title %></h3>
+  </div>
   <button type="button"
           class="add-movie-btn"
           data-action="click->select-movie#addMovie"

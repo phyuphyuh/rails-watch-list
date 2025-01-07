@@ -38,25 +38,23 @@
 }
 
 .add-movie-btn {
-  color: $lighter-jet;
-  background-color: $baby-blue;
-  border: 1px solid $lighter-jet;
-  padding: 4px 12px;
-  border-radius: 8px;
+  color: $blue;
+  background-color: transparent;
+  border: none;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 14px;
   font-family: "Didact Gothic", "Helvetica", "serif";
 
   &:hover {
-    background-color: $lighter-jet;
-    color: $cream;
+    color: $subtitleyellow;
+    text-decoration: underline;
   }
 }
 
 .add-bookmark-btn {
-  color: $lighter-jet;
+  color: $blue;
   background-color: transparent;
-  border: 1px solid $lighter-jet;
+  border: 1px solid $blue;
   border-radius: 8px;
   text-decoration: none;
   width: 40px;
@@ -66,6 +64,7 @@
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
+  font-size: 1.1rem;
 
   .btn-icon {
     position: absolute;
@@ -82,8 +81,6 @@
 
   &.expanded {
     width: 116px;
-    background-color: $lighter-jet;
-    color: $cream;
 
     .btn-icon {
       opacity: 0;
