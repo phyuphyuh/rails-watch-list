@@ -1,17 +1,12 @@
 <div class="list-show">
   <%# <div class="list-info" style="background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url(<%= cl_image_path(@list.photo.key) if @list.photo %>
-  <div class="list-info d-flex justify-content-around">
+  <div class="list-info d-flex justify-content-around" style="background-image: url(<%= cl_image_path(@list.photo.key) if @list.photo.attached? %>)">
     <div class="list-name d-flex flex-column justify-content-center">
       <h1><%= @list.name %></h1>
       <p><%= @list.description %></p>
     </div>
-    <% if @list.photo.attached? %>
-      <%= cl_image_tag @list.photo.key %>
-    <% else %>
-      <%= image_tag 'no_image.jpg' %>
-    <% end %>
   </div>
-  <div class="add-movie text-center mt-5" data-controller="show-search">
+  <div class="add-movie text-center" data-controller="show-search">
     <button type="button"
             class="add-bookmark-btn"
             data-action="click->show-search#displaySearch mouseenter->show-search#expand mouseleave->show-search#shrink"
@@ -41,7 +36,7 @@
       </button>
     </div>
   </div>
-  <div class="container">
+  <div class="bookmarks-container">
     <div class="list-bookmarks movie-cards d-flex flex-wrap align-content-start">
       <%# <% @list.bookmarks.each do |bookmark| %>
         <% @bookmarks.each do |bookmark| %>
