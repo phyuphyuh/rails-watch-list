@@ -57,7 +57,8 @@ class MovieSearchService
       release_date: result['release_date']&.split('-')&.first,
       poster_url: "https://image.tmdb.org/t/p/w500#{result['poster_path']}",
       rating: result['vote_average'],
-      overview: result['overview']
+      overview: result['overview'],
+      runtime: result['runtime']
     )
     movie
   rescue OpenURI::HTTPError => e
