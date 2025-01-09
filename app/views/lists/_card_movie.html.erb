@@ -1,7 +1,18 @@
-<div class="card-movie" role="button" data-movie-id="<%= bookmark.movie.api_id %>" data-movie-title="<%= bookmark.movie.title %>" data-bs-toggle="modal" data-bs-target="#<%= bookmark.movie.id %>">
+<div class="card-movie"
+    data-movie-id="<%= bookmark.movie.api_id %>"
+    data-movie-title="<%= bookmark.movie.title %>"
+    data-action="click->expand-card#toggle">
   <% if bookmark.movie.poster_url %>
     <%= image_tag bookmark.movie.poster_url, alt: "#{bookmark.movie.title}" %>
   <% else %>
     <%= image_tag "no_image.jpg" %>
   <% end %>
-</div>
+  <div class="movie-details">
+    <h3><%= bookmark.movie.title %></h3>
+    <p><%= bookmark.movie.release_date %></p>
+    <p><%= bookmark.movie.rating.round(1) %></p>
+    <p><%= bookmark.movie.overview %></p>
+    <%# <p><%= bookmark.movie.comment.presence || "No comment" %>
+    <%# <%= simple_form_for [@list, @bookmark], url: list_bookmark_path, method: :patch do |f| %>
+    </div>
+  </div>

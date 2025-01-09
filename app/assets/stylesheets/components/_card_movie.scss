@@ -1,13 +1,41 @@
 .card-movie {
-  width: 131px;
+  // width: 131px;
+  // height: 193px;
+
+  flex: 0 0 131px;
   height: 193px;
-  margin-bottom: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
 
   img {
     width: 100%;
     object-fit: cover;
   }
+
+  &.expanded {
+    flex: 0 0 calc(3 * 131px + 16px);
+    height: calc(2 * 193px + 8px);
+
+    .movie-details {
+      display: block;
+    }
+  }
+
+  .movie-details {
+    display: none;
+    padding: 16px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 1;
+    background-color: $offwhite;
+  }
 }
+
 // .card-movie {
 //   overflow: hidden;
 //   background: white;

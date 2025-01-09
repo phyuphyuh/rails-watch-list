@@ -38,13 +38,13 @@
   grid-gap: 8px;
   align-items: center;
   justify-items: center;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .search-cards {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     padding: 8px;
   }
 }
