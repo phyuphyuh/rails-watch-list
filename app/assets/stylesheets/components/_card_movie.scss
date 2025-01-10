@@ -75,6 +75,26 @@
     height: 100%;
     overflow-y: auto;
     background-color: $offwhite;
+
+    .date {
+      font-family: "Roboto Flex", "Helvetica", serif;
+      font-weight: 200;
+      font-size: 0.95rem;
+    }
+    .duration-genres {
+      font-size: 0.9rem;
+      font-family: "Roboto Flex", "Helvetica", serif;
+      font-weight: 100;
+    }
+    .overview {
+      margin: 4px;
+      font-size: 0.9rem;
+    }
+    .comment {
+      border: 0.8px solid $lighter-jet;
+      border-radius: 4px;
+      padding: 8px;
+    }
   }
 
   .flip-card {

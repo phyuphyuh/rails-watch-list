@@ -13,15 +13,25 @@
     </div>
   </div>
   <div class="movie-details">
-    <h3><%= bookmark.movie.title %></h3>
-    <p><%= bookmark.movie.release_date %></p>
-    <p><%= bookmark.movie.runtime %></p>
-    <% if bookmark.movie.genres.present? %>
-      <%= bookmark.movie.genres.join(', ') %>
-    <% end %>
-    <p><%= bookmark.movie.rating.round(1) %></p>
-    <p><%= bookmark.movie.overview %></p>
-    <%# <p><%= bookmark.movie.comment.presence || "No comment" %>
+    <div class="d-flex align-items-baseline">
+      <h3><%= bookmark.movie.title %></h3>
+      <span class="date ms-2"><%= bookmark.movie.release_date %></span>
+    </div>
+    <div class="duration-genres d-flex">
+      <p>
+        <%= bookmark.movie.runtime/60 %>h <%= bookmark.movie.runtime % 60 %>m &#8226;
+        <% if bookmark.movie.genres.present? %>
+          <%= bookmark.movie.genres.join(', ') %>
+        <% end %>
+      </p>
+    </div>
+    <%# <p>TMDB <%= bookmark.movie.rating.round(1) %>
+    <div class="overview">
+      <p><%= bookmark.movie.overview %></p>
+    </div>
+    <div class="comment">
+      <p><%= bookmark.comment.presence || "No comment" %></p>
+    </div>
     <%# <%= simple_form_for [@list, @bookmark], url: list_bookmark_path, method: :patch do |f| %>
     </div>
   </div>
