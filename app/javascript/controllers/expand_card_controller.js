@@ -1,8 +1,8 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["card", "details"];
-  static values = { id: Number };
+  static targets = ["card"];
+  // static values = { id: Number };
 
   connect() {
     this.expandedCard = null;
