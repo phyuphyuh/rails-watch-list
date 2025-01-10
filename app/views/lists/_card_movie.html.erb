@@ -10,6 +10,10 @@
   <div class="movie-details">
     <h3><%= bookmark.movie.title %></h3>
     <p><%= bookmark.movie.release_date %></p>
+    <p><%= bookmark.movie.runtime %></p>
+    <% if bookmark.movie.genres.present? %>
+      <%= bookmark.movie.genres.join(', ') %>
+    <% end %>
     <p><%= bookmark.movie.rating.round(1) %></p>
     <p><%= bookmark.movie.overview %></p>
     <%# <p><%= bookmark.movie.comment.presence || "No comment" %>

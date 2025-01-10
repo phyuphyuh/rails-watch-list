@@ -58,7 +58,8 @@ class MovieSearchService
       poster_url: "https://image.tmdb.org/t/p/w500#{result['poster_path']}",
       rating: result['vote_average'],
       overview: result['overview'],
-      runtime: result['runtime']
+      runtime: result['runtime'],
+      genres: result['genres']&.map { |genre| genre['name'] } || []
     )
     movie
   rescue OpenURI::HTTPError => e

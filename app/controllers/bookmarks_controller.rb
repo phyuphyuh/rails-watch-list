@@ -27,7 +27,7 @@ class BookmarksController < ApplicationController
     end
 
     if new_bookmarks.any?
-      render json: { success: true, bookmarks: new_bookmarks.as_json(include: { movie: { only: [:api_id, :title, :poster_url, :release_date, :overview, :rating] } }) }
+      render json: { success: true, bookmarks: new_bookmarks.as_json(include: { movie: { only: [:api_id, :title, :poster_url, :release_date, :overview, :rating, :runtime, :genres] } }) }
     else
       render json: { success: false }, status: :unprocessable_entity
     end

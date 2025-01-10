@@ -11,6 +11,14 @@ class ListsController < ApplicationController
     @movies = params[:query].present? ? MovieSearchService.new(query: params[:query]).call : []
     @bookmarks = @list.bookmarks.includes(:movie)
 
+    @bookmarks.each do |bookmark|
+      movie = bookmark.movie
+      next if movie.runtime.present? && movie.genres.present?
+
+      detailed_movie = MovieSearchService.new(api_id: movie.api_id).call
+      movie.update(runtime: detailed_movie.runtime, genres: detailed_movie.genres) if detailed_movie
+    end
+
     respond_to do |format|
       format.html
       format.text { render partial: 'bookmarks/search_results', locals: { movies: @movies }, formats: [:html] }
@@ -63,9 +71,6 @@ class ListsController < ApplicationController
       movie = Movie.find_by(api_id: movie_id) || MovieSearchService.new(api_id: movie_id).call.first
 
       bookmark = list.bookmarks.create(movie: movie) if movie
-      unless bookmark.save
-        Rails.logger.error("Bookmark failed to save: #{bookmark.errors.full_messages.join(", ")}")
-      end
     end
   end
 end
