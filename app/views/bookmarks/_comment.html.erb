@@ -1,3 +1,4 @@
+<h6>REVIEW</h6>
 <div class="comment" data-edit-comment-target="comment">
   <p><%= bookmark.comment.presence || "No comment" %></p>
   <button type="button" class="edit-btn" data-action="click->edit-comment#displayForm">EDIT</button>
@@ -10,6 +11,6 @@
           action: "submit->edit_comment#update click->edit-comment#preventCollapse"
         }
       } do |f| %>
-  <%= f.input :comment, value: bookmark.comment %>
+  <%= f.input :comment, label: false, value: bookmark.comment %>
   <%= f.submit "SAVE" %>
 <% end %>

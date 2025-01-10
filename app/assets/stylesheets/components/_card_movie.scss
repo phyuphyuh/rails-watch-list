@@ -100,11 +100,7 @@
       margin: 0 4px 4px;
       font-size: 0.9rem;
     }
-    .comment {
-      border: 0.8px solid $lighter-jet;
-      border-radius: 4px;
-      padding: 8px;
-    }
+
   }
 
   .flip-card {
@@ -183,6 +179,19 @@
   justify-content: center;
 }
 
-.update-comment {
-  z-index: 10;
+.form-control.is-valid {
+  border-color: inherit;
+  background: none;
+}
+
+.comment {
+  position: relative;
+  border: 0.8px solid $lighter-jet;
+  border-radius: 4px;
+  padding: 8px;
+}
+h6 {
+  color: $blue;
+  font-weight: 200;
+  margin-bottom: 2px;
 }

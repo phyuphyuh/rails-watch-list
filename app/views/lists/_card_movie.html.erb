@@ -37,4 +37,5 @@
       <% end %>
     </div>
   </div>
+  <%= link_to "DELETE", bookmark_path(bookmark), class: "edit-btn", data: {turbo_method: :delete, turbo_confirm: "Delete bookmark?"} %>
 </div>
