@@ -5,37 +5,50 @@
   data-controller="edit-comment"
   data-edit-comment-target="card">
   <div class="flip-card">
-    <% if bookmark.movie.poster_url %>
-      <%= image_tag bookmark.movie.poster_url, alt: "#{bookmark.movie.title}" %>
-    <% else %>
-      <%= image_tag "no_image.jpg" %>
-    <% end %>
+    <div class="front-poster">
+      <% if bookmark.movie.poster_url %>
+        <%= image_tag bookmark.movie.poster_url, alt: "#{bookmark.movie.title}" %>
+      <% else %>
+        <%= image_tag "no_image.jpg" %>
+      <% end %>
+    </div>
     <div class="view-details">
       <span></span>
     </div>
   </div>
   <div class="movie-details">
-    <div class="d-flex align-items-baseline">
-      <h3><%= bookmark.movie.title %></h3>
-      <span class="date ms-2"><%= bookmark.movie.release_date %></span>
-    </div>
-    <div class="duration-genres d-flex">
-      <p>
-        <span class="duration"><%= bookmark.movie.runtime/60 %>h <%= bookmark.movie.runtime % 60 %>m</span> &#8226;
-        <% if bookmark.movie.genres.present? %>
-          <%= bookmark.movie.genres.join(', ') %>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="details-left d-flex flex-column">
+        <div class="d-flex align-items-baseline">
+          <h3><%= bookmark.movie.title %></h3>
+          <span class="date ms-2"><%= bookmark.movie.release_date %></span>
+        </div>
+        <div class="duration-genres d-flex">
+          <p>
+            <span class="duration"><%= bookmark.movie.runtime/60 %>h <%= bookmark.movie.runtime % 60 %>m</span> &#8226;
+            <% if bookmark.movie.genres.present? %>
+              <%= bookmark.movie.genres.join(', ') %>
+            <% end %>
+          </p>
+        </div>
+        <div class="overview">
+          <p><%= bookmark.movie.overview %></p>
+        </div>
+      </div>
+      <div class="details-right me-3 ms-2 mb-1">
+        <% if bookmark.movie.poster_url %>
+          <%= image_tag bookmark.movie.poster_url, alt: "#{bookmark.movie.title}" %>
+        <% else %>
+          <%= image_tag "no_image.jpg" %>
         <% end %>
-      </p>
+      </div>
     </div>
     <%# <p>TMDB <%= bookmark.movie.rating.round(1) %>
-    <div class="overview">
-      <p><%= bookmark.movie.overview %></p>
-    </div>
     <div class="update-comment">
       <%= turbo_frame_tag bookmark do %>
         <%= render 'bookmarks/comment', bookmark: bookmark %>
       <% end %>
     </div>
   </div>
-  <%= link_to "DELETE", bookmark_path(bookmark), class: "edit-btn", data: {turbo_method: :delete, turbo_confirm: "Delete bookmark?"} %>
+  <%# <%= link_to "DELETE", bookmark_path(bookmark), class: "edit-btn", data: {turbo_method: :delete, turbo_confirm: "Delete bookmark?"} %>
 </div>
