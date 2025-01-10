@@ -13,6 +13,6 @@
           action: "submit->edit_comment#update click->edit-comment#preventCollapse"
         }
       } do |f| %>
-  <%= f.input :comment, label: false, value: bookmark.comment, input_html: { class: "autofocus", data: { edit_comment_target: "input" } } %>
+  <%= f.input :comment, label: false, value: bookmark.comment, input_html: { class: "comment-input", data: { edit_comment_target: "input" } } %>
   <%= f.submit "SAVE", class: 'save-btn' %>
 <% end %>
