@@ -4,7 +4,7 @@
 }
 
 .list-info {
-  height: 65vh;
+  height: 80vh;
   width: 100%;
   margin: 0 auto;
   padding: 16px;
@@ -14,23 +14,42 @@
   background-blend-mode: luminosity;
   background-color: $seasalt;
   align-items: center;
-
+  position: relative;
 
   // img {
   //   width: 36%;
   //   object-fit: contain;
   // }
+
   .list-name {
-    width: 440px;
+    width: 100%;
     height: fit-content;
-    overflow: scroll;
-    color: $subtitleyellow;
+    max-height: 30vh;
+    overflow-y: auto;
+    color: $aureolin;
+    background-image: linear-gradient($moonstone, $skyblue);
     // background-color: rgba($color: $charcoal, $alpha: 0.8);
     font-weight: bold;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 24px;
+    z-index: 3;
 
     p {
       font-size: 1.1rem;
+      display: block;
     }
+    &:hover p {
+      display: none;
+      transition: display 0.3s linear allow-discrete;
+    }
+    // @starting-style {
+    //   p {
+    //     display: block;
+    //   }
+    // }
   }
 }
 
@@ -44,8 +63,8 @@
 }
 
 .bookmarks-container {
-  width: 90%;
-  margin: 16px auto;
+  width: 80%;
+  margin: 24px auto;
 }
 
 .list-bookmarks {
@@ -124,5 +143,11 @@
   }
   code {
     color: $lightneonyellow;
+  }
+}
+
+@media (min-width: 100px) and (max-width: 575px) {
+  .list-info {
+    height: 100vh;
   }
 }

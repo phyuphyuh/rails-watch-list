@@ -36,13 +36,14 @@
 //   }
 // }
 
-// .movie-grid {
-//   display: grid;
-//   grid-template-columns: repeat(auto-fill, 131px);
-//   grid-auto-rows: 193px;
-//   gap: 8px; /* Adjust spacing between cards */
-//   position: relative;
-// }
+.movie-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 131px);
+  grid-auto-rows: 193px;
+  gap: 8px;
+  position: relative;
+  justify-content: center;
+}
 
 .card-movie {
   position: relative;
@@ -166,15 +167,6 @@
   &.flipped .flip-card {
     transform: rotateY(180deg);
   }
-}
-
-.movie-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 131px);
-  grid-auto-rows: 193px;
-  gap: 8px;
-  position: relative;
-  justify-content: center;
 }
 
 .form-control.is-valid {
