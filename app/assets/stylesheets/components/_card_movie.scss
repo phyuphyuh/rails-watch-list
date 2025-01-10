@@ -76,6 +76,11 @@
     overflow-y: auto;
     background-color: $offwhite;
 
+    h3 {
+      line-height: 1;
+      margin-top: 2px;
+    }
+
     .date {
       font-family: "Roboto Flex", "Helvetica", serif;
       font-weight: 200;
@@ -86,8 +91,11 @@
       font-family: "Roboto Flex", "Helvetica", serif;
       font-weight: 100;
     }
+    .duration {
+      font-weight: 200;
+    }
     .overview {
-      margin: 4px;
+      margin: 0 4px 4px;
       font-size: 0.9rem;
     }
     .comment {

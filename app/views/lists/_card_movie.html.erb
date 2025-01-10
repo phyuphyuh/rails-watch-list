@@ -19,7 +19,7 @@
     </div>
     <div class="duration-genres d-flex">
       <p>
-        <%= bookmark.movie.runtime/60 %>h <%= bookmark.movie.runtime % 60 %>m &#8226;
+        <span class="duration"><%= bookmark.movie.runtime/60 %>h <%= bookmark.movie.runtime % 60 %>m</span> &#8226;
         <% if bookmark.movie.genres.present? %>
           <%= bookmark.movie.genres.join(', ') %>
         <% end %>

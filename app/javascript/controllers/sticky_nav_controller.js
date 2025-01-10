@@ -13,4 +13,11 @@ export default class extends Controller {
       button.style.backgroundColor = bgOpacity;
     });
   }
+
+  hover(event) {
+    if (event.type === "mouseenter") {
+      event.currentTarget.style.backgroundColor = "transparent";
+    } else if (event.type === "mouseleave")
+      event.currentTarget.style.backgroundColor = "revert-layer";
+  }
 }
