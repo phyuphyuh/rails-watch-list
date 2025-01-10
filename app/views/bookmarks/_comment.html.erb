@@ -1,7 +1,9 @@
-<h6>REVIEW</h6>
-<div class="comment" data-edit-comment-target="comment">
-  <p><%= bookmark.comment.presence || "No comment" %></p>
-  <button type="button" class="edit-btn" data-action="click->edit-comment#displayForm">EDIT</button>
+<div class="comment-container">
+  <h6>REVIEW</h6>
+  <div class="comment" data-edit-comment-target="comment">
+    <p><%= bookmark.comment.presence || "No comment" %></p>
+    <button type="button" class="edit-btn" data-action="click->edit-comment#displayForm">EDIT</button>
+  </div>
 </div>
 <%= simple_form_for [bookmark.list, bookmark],
       html: {
@@ -12,5 +14,5 @@
         }
       } do |f| %>
   <%= f.input :comment, label: false, value: bookmark.comment, input_html: { class: "autofocus", data: { edit_comment_target: "input" } } %>
-  <%= f.submit "SAVE" %>
+  <%= f.submit "SAVE", class: 'save-btn' %>
 <% end %>

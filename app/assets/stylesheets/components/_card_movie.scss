@@ -104,6 +104,7 @@
     .overview {
       margin: 0 4px 4px;
       font-size: 0.9rem;
+      text-wrap: pretty;
     }
 
   }
@@ -174,17 +175,22 @@
   background: none;
 }
 
-.comment {
+.comment-container {
   position: relative;
+}
+
+.comment {
   border: 0.8px solid $lighter-jet;
   border-radius: 8px;
   padding: 8px;
 }
+
 h6 {
   color: $blue;
   font-weight: 200;
   margin-bottom: 4px;
 }
+
 
 @media (min-width: 100px) and (max-width: 575px) {
   .card-movie.expanded {

@@ -76,9 +76,21 @@
   border: none;
   color: $moonstone;
   position: absolute;
-  bottom: 2px;
+  top: 0px;
   right: 2px;
   font-size: 0.9rem;
+  background-color: transparent;
+
+  &:hover {
+    color: $aureolin;
+  }
+}
+
+.save-btn {
+  border: none;
+  color: $moonstone;
+  font-size: 0.9rem;
+  background-color: transparent;
 
   &:hover {
     color: $aureolin;
