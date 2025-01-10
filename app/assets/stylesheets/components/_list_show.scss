@@ -1,5 +1,6 @@
 .list-show {
   margin: -40px auto;
+  position: relative;
 }
 
 .list-info {
@@ -44,15 +45,11 @@
 
 .bookmarks-container {
   width: 90%;
-  margin: 0 auto;
+  margin: 16px auto;
 }
 
 .list-bookmarks {
   // background-color: $grass;
-}
-
-.add-movie {
-
 }
 
 .form-control.search-movie-input-show {
@@ -70,6 +67,20 @@
     border-bottom: 1px solid $subtitleyellow;
   }
 
+}
+
+.add-movie {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+
+  .add-fixed {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+  }
 }
 
 .search-section {
@@ -114,9 +125,4 @@
   code {
     color: $lightneonyellow;
   }
-}
-
-.bookmarks-container {
-  margin: 16px auto;
-  width: 90%;
 }

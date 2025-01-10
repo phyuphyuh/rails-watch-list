@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["comment", "card", "form"]
+  static targets = ["comment", "card", "form", "input"]
 
   connect() {
     console.log("comment connected");
@@ -11,6 +11,7 @@ export default class extends Controller {
     event.stopPropagation();
     this.commentTarget.classList.add('d-none');
     this.formTarget.classList.remove('d-none');
+    this.inputTarget.focus();
   }
 
   preventCollapse(event) {

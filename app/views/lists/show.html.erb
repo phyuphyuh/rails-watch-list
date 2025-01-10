@@ -6,13 +6,15 @@
     </div>
   </div>
   <div class="add-movie text-center" data-controller="show-search">
-    <button type="button"
+    <div class="add-fixed">
+      <button type="button"
             class="add-bookmark-btn"
             data-action="click->show-search#displaySearch mouseenter->show-search#expand mouseleave->show-search#shrink"
-      data-show-search-target="addButton">
-      <span class="btn-icon">&#65291;</span>
-      <span class="btn-text">ADD MOVIE</span>
-    </button>
+        data-show-search-target="addButton">
+        <span class="btn-icon">&#65291;</span>
+        <span class="btn-text">ADD MOVIE</span>
+      </button>
+    </div>
     <div class="search-section" data-show-search-target="searchSection">
       <div class="select-movie-container d-flex flex-column align-content-center justify-content-start" data-controller="select-movie">
         <input type="text"
