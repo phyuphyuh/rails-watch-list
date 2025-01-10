@@ -1,7 +1,9 @@
 <div class="card-movie"
     data-movie-id="<%= bookmark.movie.api_id %>"
     data-movie-title="<%= bookmark.movie.title %>"
-    data-action="click->expand-card#toggle">
+    data-action="click->expand-card#toggle"
+  data-controller="edit-comment"
+  data-edit-comment-target="card">
   <div class="flip-card">
     <% if bookmark.movie.poster_url %>
       <%= image_tag bookmark.movie.poster_url, alt: "#{bookmark.movie.title}" %>
@@ -29,9 +31,10 @@
     <div class="overview">
       <p><%= bookmark.movie.overview %></p>
     </div>
-    <div class="comment">
-      <p><%= bookmark.comment.presence || "No comment" %></p>
-    </div>
-    <%# <%= simple_form_for [@list, @bookmark], url: list_bookmark_path, method: :patch do |f| %>
+    <div class="update-comment">
+      <%= turbo_frame_tag bookmark do %>
+        <%= render 'bookmarks/comment', bookmark: bookmark %>
+      <% end %>
     </div>
   </div>
+</div>

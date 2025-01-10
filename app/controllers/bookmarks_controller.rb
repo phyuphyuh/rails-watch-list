@@ -34,12 +34,24 @@ class BookmarksController < ApplicationController
   end
 
   def update
-    @bookmark = Bookmark.find(params[:id])
+    @list = List.find(params[:list_id])
+    # @bookmark = Bookmark.find(params[:id])
+    @bookmark = @list.bookmarks.find(params[:id])
 
     if @bookmark.update(bookmark_params)
-      redirect_to list_path(@bookmark.list)
+      # render partial: 'bookmarks/comment', locals: { bookmark: @bookmark }
+      # respond_to do |format|
+      #   format.turbo_stream do
+      #     render turbo_stream: turbo_stream.append(:bookmarks, partial: "bookmarks/comment",
+      #       target: "bookmarks",
+      #       locals: { bookmark: @bookmark })
+      #   end
+      #   format.html { redirect_to list_path(@bookmark.list) }
+      # end
+      render turbo_stream: turbo_stream.replace("bookmark_#{@bookmark.id}", partial: 'bookmarks/comment', locals: { bookmark: @bookmark })
+
     else
-      render 'lists/show', status: :unprocessable_entity
+      render turbo_stream: turbo_stream.replace("bookmark_#{@bookmark.id}", partial: 'bookmarks/comment', locals: { bookmark: @bookmark }), status: :unprocessable_entity
     end
   end
 

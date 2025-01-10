@@ -9,7 +9,7 @@ class ListsController < ApplicationController
   def show
     # @bookmark = Bookmark.new
     @movies = params[:query].present? ? MovieSearchService.new(query: params[:query]).call : []
-    @bookmarks = @list.bookmarks.includes(:movie)
+    @bookmarks = @list.bookmarks.includes(:movie).order(:created_at)
 
     @bookmarks.each do |bookmark|
       movie = bookmark.movie

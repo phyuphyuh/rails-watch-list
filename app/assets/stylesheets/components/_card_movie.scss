@@ -75,6 +75,8 @@
     height: 100%;
     overflow-y: auto;
     background-color: $offwhite;
+    border: 1px solid $lighter-jet;
+    cursor: default;
 
     h3 {
       line-height: 1;
@@ -131,6 +133,7 @@
     transform: rotateY(180deg);
     height: 100%;
     font-size: 1.3rem;
+    border: 1px solid $lighter-jet;
 
     span {
       position: relative;
@@ -178,4 +181,8 @@
   gap: 8px;
   position: relative;
   justify-content: center;
+}
+
+.update-comment {
+  z-index: 10;
 }
