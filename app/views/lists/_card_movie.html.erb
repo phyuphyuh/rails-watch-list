@@ -1,9 +1,7 @@
 <div class="card-movie"
     data-movie-id="<%= bookmark.movie.api_id %>"
     data-movie-title="<%= bookmark.movie.title %>"
-    data-action="click->expand-card#toggle"
-  on:click={toggleFlip}
-  class:flipped={isFlipped}>
+    data-action="click->expand-card#toggle">
   <div class="flip-card">
     <% if bookmark.movie.poster_url %>
       <%= image_tag bookmark.movie.poster_url, alt: "#{bookmark.movie.title}" %>
@@ -11,7 +9,6 @@
       <%= image_tag "no_image.jpg" %>
     <% end %>
     <div class="view-details">
-      <%# <span>VIEW &#10230;</span> %>
       <span></span>
     </div>
   </div>

@@ -126,10 +126,22 @@ export default class extends Controller {
         const poster = bookmark.movie.poster_url || "/assets/images/no_image.jpg";
 
         const bookmarkCard = `
-          <div class="card-movie movie-cards" data-movie-id="${bookmark.movie.api_id}">
-            <img src="${poster}" alt="${bookmark.movie.title}">
+          <div class="card-movie"
+              data-movie-id="${bookmark.movie.api_id}"
+              data-movie-title="${bookmark.movie.title}"
+              data-action="click->expand-card#toggle">
+            <div class="flip-card">
+              <img src="${poster}" alt="${bookmark.movie.title}">
+              <div class="view-details">
+                <span></span>
+              </div>
+            </div>
+            <div class="movie-details">
+              <h3>${bookmark.movie.title}</h3>
+            </div>
           </div>
         `;
+
         bookmarksContainer.insertAdjacentHTML("beforeend", bookmarkCard);
       }
     })
