@@ -1,23 +1,17 @@
 .card-list {
-  background-size: cover;
-  background-position: center;
-  height: 380px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  height: 200px;
+  border-radius: 8px;
+  margin-bottom: 4px;
   position: relative;
+  background-color: $cream;
+  padding: 16px;
 
   h2 a {
-    color: $nyanza;
+    color: $lighter-jet;
   }
 
   &:hover h2 a {
-    opacity: 0.8;
+    color: $ruddy-blue;
   }
 }
 

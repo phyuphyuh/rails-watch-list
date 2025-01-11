@@ -124,20 +124,45 @@ export default class extends Controller {
       console.log(existingCard);
       if (!existingCard) {
         const poster = bookmark.movie.poster_url || "/assets/images/no_image.jpg";
+        const genres = bookmark.movie.genres.join(", ");
 
         const bookmarkCard = `
           <div class="card-movie"
               data-movie-id="${bookmark.movie.api_id}"
               data-movie-title="${bookmark.movie.title}"
-              data-action="click->expand-card#toggle">
+              data-action="click->expand-card#toggle"
+              data-controller="edit-comment"
+              data-edit-comment-target="card">
             <div class="flip-card">
-              <img src="${poster}" alt="${bookmark.movie.title}">
+              <div class="front-poster">
+                <img src="${poster}" alt="${bookmark.movie.title}">
+              </div>
               <div class="view-details">
                 <span></span>
               </div>
             </div>
             <div class="movie-details">
-              <h3>${bookmark.movie.title}</h3>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="details-left">
+                  <img src="${poster}" alt="${bookmark.movie.title}">
+                </div>
+                <div class="details-right d-flex flex-column mx-3">
+                  <div class="d-flex align-items-baseline">
+                    <h3>${bookmark.movie.title}</h3>
+                    <span class="date ms-2">${bookmark.movie.release_date}</span>
+                  </div>
+                  <div class="duration-genres d-flex">
+                    <p>
+                      <span class="duration">${bookmark.movie.runtime/60}h ${bookmark.movie.runtime % 60}m</span> &#8226;
+                       ${genres}
+                    </p>
+                  </div>
+                  <div class="overview">
+                    <p>${bookmark.movie.overview}</p>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         `;

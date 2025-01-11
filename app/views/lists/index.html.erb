@@ -2,12 +2,14 @@
 <body id="homepage">
   <%= render "lists/banner" %>
   <div class="container">
-    <h2>LISTS</h2>
-    <div class="cards">
-      <% @lists.each do |list| %>
-        <%= render "lists/card_list", list: list %>
-      <% end %>
+    <div class="lists-container">
+      <h2>LISTS</h2>
+      <div class="cards">
+        <% @lists.each do |list| %>
+          <%= render "lists/card_list", list: list %>
+        <% end %>
+      </div>
+      <%# <%= link_to "Create a movie list", new_list_path(@list), class: 'custom-link' %>
     </div>
-    <%# <%= link_to "Create a movie list", new_list_path(@list), class: 'custom-link' %>
   </div>
 </body>

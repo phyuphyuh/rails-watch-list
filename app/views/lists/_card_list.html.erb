@@ -1,5 +1,10 @@
-<div class="item card-list" role="button" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.attached? ? cl_image_path(list.photo.key) : image_path('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPQDYau3Hs4-xw1i8jVSUY4BlF4FLmg8lQqg&usqp=CAU') %>)">
+<div class="item card-list" role="button">
+  <p>LAST UPDATED <%= list.updated_at.strftime("%b %d, %Y") %></p>
   <h2><%= link_to list.name, list_path(list), class: 'text-decoration-none', title: list.name %></h2>
+  <p><%= list.description.truncate(200) %></p>
+  <div class="list-img-home">
+    <%= cl_image_tag @list.photo.key if @list.photo.attached? %>
+  </div>
   <%= link_to "", list_path(list), class: 'card-list-link' %>
   <%= link_to list_path(list), data: {turbo_method: :delete}, class: "delete-btn" do %>
     <i class="fa-solid fa-xmark"></i>
