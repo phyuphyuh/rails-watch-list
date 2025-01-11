@@ -5,9 +5,11 @@
       <p><%= @list.description %></p>
       <p><%= @bookmarks.count %> films</p>
     </div>
-    <div class="list-img">
-      <%= cl_image_tag @list.photo.key if @list.photo.attached? %>
-    </div>
+    <% if @list.photo.attached? %>
+      <div class="list-img">
+        <%= cl_image_tag @list.photo.key %>
+      </div>
+    <% end %>
   </div>
   <div class="bookmarks-container">
     <%= turbo_frame_tag "bookmarks", class: "list-bookmarks movie-cards", data: { controller: "expand-card" } do %>
