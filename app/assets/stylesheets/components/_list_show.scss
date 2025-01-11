@@ -1,5 +1,5 @@
 .list-show {
-  margin: 40px auto 0;
+  margin: 30px auto 0;
   position: relative;
 }
 
@@ -12,9 +12,7 @@
   position: sticky;
   top: 0;
   padding: 16px;
-  border: 1px solid $lighter-jet;
-  border-radius: 8px;
-  margin-left: 16px;
+  margin-left: 12px;
   // margin: 0 auto;
   // border-bottom: 1px solid $lighter-jet;
 
@@ -195,7 +193,7 @@
       width: 100%;
       height: auto;
       position: initial;
-      margin: 8px;
+      margin: 8px auto;
     }
 
     .bookmarks-container {
