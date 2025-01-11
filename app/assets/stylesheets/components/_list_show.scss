@@ -1,5 +1,5 @@
 .list-show {
-  margin: 30px auto 0;
+  margin: 32px auto 64px;
   position: relative;
 }
 
@@ -35,15 +35,18 @@
     height: auto;
     margin: 16px 0;
     object-fit: contain;
+    overflow: hidden;
 
     img {
       width: 100%;
       -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
       filter: grayscale(100%);
-      &:hover {
-        -webkit-filter: none;
-        filter: none;
-      }
+      transition: all 0.3s ease-out;
+    }
+    &:hover img {
+      -webkit-filter: none;
+      filter: none;
+      transform: scale(1.05);
     }
 
   }
@@ -95,6 +98,16 @@
   // margin: 80px auto;
   width: 70%;
   margin: 16px auto;
+  background: linear-gradient(
+    to bottom,
+    $cream,
+    $cream 197px,
+    $blue 197px,
+    $blue 398px,
+    $cream 398px,
+    $cream
+  );
+  // background-size: 100% 193px;
 }
 
 .form-control.search-movie-input-show {
@@ -123,7 +136,7 @@
 
   .add-fixed {
     position: fixed;
-    bottom: 24px;
+    bottom: 20px;
     right: 24px;
   }
 }

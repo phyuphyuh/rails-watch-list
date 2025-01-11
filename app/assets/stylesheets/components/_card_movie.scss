@@ -50,7 +50,7 @@
   overflow: hidden;
   transition: all 0.3s ease;
   cursor: pointer;
-  background-color: $seasalt;
+  background-color: $cream;
 
   img {
     object-fit: cover;
@@ -75,7 +75,7 @@
     width: 100%;
     height: 100%;
     overflow-y: auto;
-    background-color: $offwhite;
+    background-color: $cream;
     border: 1px solid $lighter-jet;
     cursor: default;
 
@@ -102,9 +102,12 @@
       object-fit: cover;
     }
     .overview {
-      margin: 0 4px 4px;
+      margin: 0 4px;
       font-size: 0.9rem;
       text-wrap: pretty;
+      p {
+        margin-bottom: 0;
+      }
     }
 
   }
@@ -126,7 +129,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: $offwhite;
+    background-color: $cream;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
   }
@@ -180,9 +183,11 @@
 }
 
 .comment {
-  border: 0.8px solid $lighter-jet;
-  border-radius: 8px;
+  // border: 0.8px solid $lighter-jet;
   padding: 8px;
+  border-radius: 4px;
+  background-color: $offwhite;
+  color: $blue;
 }
 
 .comment-input {

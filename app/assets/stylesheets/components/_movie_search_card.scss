@@ -7,11 +7,9 @@
   // align-items: center;
   color: $lighter-jet;
   background-color: $seasalt;
-  border-radius: 5px;
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
   position: relative;
   // overflow: hidden;
-  font-family: "Didact Gothic", "Helvetica", "serif";
   padding-bottom: 2px;
 
   img {
@@ -23,11 +21,11 @@
   }
   .search-card-title {
     overflow: hidden;
-    padding: 2px;
+    padding: 2px 4px;
 
     h3 {
       font-size: 14px;
-      font-weight: normal;
+      font-family: "Didact Gothic", "Helvetica", "serif";
     }
   }
 }
