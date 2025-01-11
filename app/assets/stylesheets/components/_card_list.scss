@@ -9,9 +9,15 @@
   h2 a {
     color: $lighter-jet;
   }
-
   &:hover h2 a {
     color: $ruddy-blue;
+  }
+  span {
+    font-size: 0.9rem;
+    color: $airforce-blue;
+  }
+  p:first-of-type {
+    font-size: 0.95rem;
   }
 }
 

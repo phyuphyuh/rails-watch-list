@@ -1,7 +1,7 @@
-<div class="item card-list" role="button">
-  <p>LAST UPDATED <%= list.updated_at.strftime("%b %d, %Y") %></p>
+<div class="card-list" role="button">
+  <p><span>LAST UPDATED</span>&emsp;<%= list.updated_at.strftime("%b %d, %Y") %></p>
   <h2><%= link_to list.name, list_path(list), class: 'text-decoration-none', title: list.name %></h2>
-  <p><%= list.description.truncate(200) %></p>
+  <p><%= list.description.truncate(250) %></p>
   <div class="list-img-home">
     <%= cl_image_tag @list.photo.key if @list.photo.attached? %>
   </div>
