@@ -10,18 +10,16 @@
     </div>
   </div>
   <div class="bookmarks-container">
-    <div class="list-bookmarks movie-cards"
-        data-controller="expand-card">
+    <%= turbo_frame_tag "bookmarks", class: "list-bookmarks movie-cards", data: { controller: "expand-card" } do %>
+      <%# <div class="list-bookmarks movie-cards"
+          data-controller="expand-card"> %>
       <%# <% @list.bookmarks.each do |bookmark| %>
         <% @bookmarks.each do |bookmark| %>
           <%= render "lists/card_movie", bookmark: bookmark %>
-          <%# <%= render "lists/modal", bookmark: bookmark %>
         <% end %>
-      </div>
+        <%# </div> %>
+      <% end %>
     </div>
-    <%# </div> %>
-    <%# <%= link_to "Add a movie", new_list_bookmark_path(@list) %>
-    <%# </div> %>
   </div>
   <div class="add-movie text-center" data-controller="show-search">
     <div class="add-fixed">

@@ -103,15 +103,20 @@ export default class extends Controller {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json",
+        // "Accept": "application/json",
+        "Accept": "text/vnd.turbo-stream.html",
         "X-CSRF-Token": csrfToken,
       },
       body: JSON.stringify({ movie_ids: movieIds })
     })
-      .then(response => response.json())
-      .then((data) => {
-        console.log("Bookmarks received from server:", data.bookmarks);
-        this.displayBookmarks(data.bookmarks);
+      // .then(response => response.json())
+      .then(response => response.text())
+      // .then((data) => {
+      //   // this.displayBookmarks(data.bookmarks);
+      // })
+      .then((html) => {
+        console.log(html);
+        Turbo.renderStreamMessage(html);
       })
       .catch(error => console.error("Error adding movie:", error));
   }
