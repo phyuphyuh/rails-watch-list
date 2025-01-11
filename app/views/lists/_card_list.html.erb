@@ -5,9 +5,11 @@
       <h2><%= link_to list.name, list_path(list), class: 'text-decoration-none', title: list.name %></h2>
       <p class="ellipsis"><%= list.description %></p>
     </div>
-    <div class="list-img-home">
-      <%= cl_image_tag list.photo.key if list.photo.attached? %>
-    </div>
+    <% if list.photo.attached? %>
+      <div class="list-img-home">
+        <%= cl_image_tag list.photo.key %>
+      </div>
+    <% end %>
   </div>
   <%= link_to "", list_path(list), class: 'card-list-link' %>
   <%= link_to list_path(list), data: {turbo_method: :delete}, class: "delete-btn" do %>
