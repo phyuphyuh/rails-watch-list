@@ -1,13 +1,19 @@
 .list-show {
-  margin: -40px auto;
+  margin: 30px auto;
   position: relative;
 }
 
 .list-info {
-  height: 65vh;
-  width: 95%;
-  margin: 0 auto;
-  border-bottom: 1px solid $lighter-jet;
+  // height: 65vh;
+  // width: 95%;
+  height: 100vh;
+  width: 30%;
+  position: sticky;
+  top: 0;
+  padding: 16px;
+  // margin: 0 auto;
+  // border-bottom: 1px solid $lighter-jet;
+
   /* background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -16,18 +22,37 @@
   // align-items: center;
   // position: relative;
 
-  img {
+  // img {
+  //   width: 548px;
+  //   object-fit: contain;
+  //   margin: 16px 0;
+  // }
+
+  .list-img {
     width: 548px;
-    object-fit: contain;
+    height: 394px;
     margin: 16px 0;
+    object-fit: contain;
+
+    img {
+      width: 100%;
+      -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+      filter: grayscale(100%);
+      &:hover {
+        -webkit-filter: none;
+        filter: none;
+      }
+    }
+
   }
 
   .list-name {
-    width: 440px;
+    // width: 440px;
     height: fit-content;
     overflow-y: auto;
     color: $jet;
-    padding: 16px 0px;
+    // padding: 16px 0px;
+    text-wrap: pretty;
     // background-image: linear-gradient($moonstone, $skyblue);
     // background-color: rgba($color: $charcoal, $alpha: 0.8);
     // font-weight: bold;
@@ -43,13 +68,12 @@
     }
 
     p:first-of-type {
-      font-size: 1.1rem;
+      font-size: 1rem;
       display: block;
       color: $lighter-jet;
-      text-wrap: pretty;
     }
     p:nth-of-type(2) {
-      font-size: 0.95rem;
+      font-size: 0.93rem;
       color: $ruddy-blue;
       margin-bottom: 0;
     }
@@ -66,12 +90,10 @@
 }
 
 .bookmarks-container {
-  width: 80%;
-  margin: 80px auto;
-}
-
-.list-bookmarks {
-  // background-color: $grass;
+  // width: 80%;
+  // margin: 80px auto;
+  width: 70%;
+  margin: 16px auto;
 }
 
 .form-control.search-movie-input-show {
@@ -158,5 +180,23 @@
 @media (min-width: 1200px) {
   .list-name h1 {
       font-size: 2.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .list-show {
+    flex-direction: column;
+
+    .list-info {
+      width: 100%;
+      height: auto;
+      position: initial;
+    }
+
+    .bookmarks-container {
+      width: 100%;
+      margin: 0 auto;
+
+    }
   }
 }

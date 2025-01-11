@@ -1,11 +1,27 @@
-<div class="list-show">
+<div class="list-show d-flex">
   <div class="list-info d-flex justify-content-between flex-wrap align-items-end">
     <div class="list-name d-flex flex-column justify-content-center">
       <h1><%= @list.name %></h1>
       <p><%= @list.description %></p>
       <p><%= @bookmarks.count %> films</p>
     </div>
-    <%= cl_image_tag @list.photo.key if @list.photo.attached? %>
+    <div class="list-img">
+      <%= cl_image_tag @list.photo.key if @list.photo.attached? %>
+    </div>
+  </div>
+  <div class="bookmarks-container">
+    <div class="list-bookmarks movie-cards"
+        data-controller="expand-card">
+      <%# <% @list.bookmarks.each do |bookmark| %>
+        <% @bookmarks.each do |bookmark| %>
+          <%= render "lists/card_movie", bookmark: bookmark %>
+          <%# <%= render "lists/modal", bookmark: bookmark %>
+        <% end %>
+      </div>
+    </div>
+    <%# </div> %>
+    <%# <%= link_to "Add a movie", new_list_bookmark_path(@list) %>
+    <%# </div> %>
   </div>
   <div class="add-movie text-center" data-controller="show-search">
     <div class="add-fixed">
@@ -38,18 +54,4 @@
         &#9587;
       </button>
     </div>
-  </div>
-  <div class="bookmarks-container">
-    <div class="list-bookmarks movie-cards"
-        data-controller="expand-card">
-      <%# <% @list.bookmarks.each do |bookmark| %>
-        <% @bookmarks.each do |bookmark| %>
-          <%= render "lists/card_movie", bookmark: bookmark %>
-          <%# <%= render "lists/modal", bookmark: bookmark %>
-        <% end %>
-      </div>
-    </div>
-    <%# </div> %>
-    <%# <%= link_to "Add a movie", new_list_bookmark_path(@list) %>
-    <%# </div> %>
   </div>
