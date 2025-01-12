@@ -45,17 +45,22 @@ class BookmarksController < ApplicationController
 
     if @bookmark.update(bookmark_params)
       # render partial: 'bookmarks/comment', locals: { bookmark: @bookmark }
-      render turbo_stream: turbo_stream.replace("bookmark_#{@bookmark.id}", partial: 'bookmarks/comment', locals: { bookmark: @bookmark })
+      render turbo_stream: turbo_stream.replace("bookmark_comment_#{@bookmark.id}", partial: 'bookmarks/comment', locals: { bookmark: @bookmark })
     else
-      render turbo_stream: turbo_stream.replace("bookmark_#{@bookmark.id}", partial: 'bookmarks/comment', locals: { bookmark: @bookmark }), status: :unprocessable_entity
+      render turbo_stream: turbo_stream.replace("bookmark_comment_#{@bookmark.id}", partial: 'bookmarks/comment', locals: { bookmark: @bookmark }), status: :unprocessable_entity
     end
   end
 
   def destroy
     @bookmark = Bookmark.find(params[:id])
-    @bookmark.destroy
-    redirect_to list_path(@bookmark.list), status: :see_other
-    # render turbo_stream: turbo_stream.replace("bookmark_count", partial: "lists/bookmark_count", locals: { count: @bookmark.list.bookmarks.count })
+
+    if @bookmark.destroy
+    # redirect_to list_path(@bookmark.list), status: :see_other
+      render turbo_stream: [
+        turbo_stream.remove("bookmark_#{@bookmark.id}"),
+        turbo_stream.replace("bookmark_count", partial: "lists/bookmark_count", locals: { count: @bookmark.list.bookmarks.count })
+      ]
+    end
   end
 
   private

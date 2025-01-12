@@ -1,7 +1,8 @@
 <div class="card-movie"
     data-movie-id="<%= bookmark.movie.api_id %>"
     data-movie-title="<%= bookmark.movie.title %>"
-    data-action="click->expand-card#toggle">
+    data-action="click->expand-card#toggle"
+  id="bookmark_<%= bookmark.id %>">
   <div class="flip-card">
     <div class="front-poster">
       <% if bookmark.movie.poster_url %>
@@ -48,6 +49,7 @@
     <div class="update-comment mt-3" data-controller="edit-comment">
       <%= render 'bookmarks/comment', bookmark: bookmark %>
     </div>
-    <%= link_to "DELETE", bookmark_path(bookmark), class: "delete delete-bm", data: {turbo_method: :delete} %>
+    <%# <%= link_to "DELETE", bookmark_path(bookmark), class: "delete delete-bm", data: {turbo_method: :delete} %>
+    <%= link_to "DELETE", bookmark_path(bookmark), method: :delete, class: "delete delete-bm", data: { turbo_method: :delete } %>
   </div>
 </div>
