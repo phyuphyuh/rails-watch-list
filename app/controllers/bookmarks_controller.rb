@@ -39,8 +39,13 @@ class BookmarksController < ApplicationController
         fetched_movie
       end
 
+      if movie.runtime.blank? || movie.genres.blank?
+        detailed_movie = MovieSearchService.new(api_id: movie.api_id).call
+        movie.update(runtime: detailed_movie.runtime, genres: detailed_movie.genres) if detailed_movie
+      end
+
       unless Bookmark.exists?(list: @list, movie: movie)
-        Bookmark.create(list: @list, movie: movie)
+        Bookmark.find_or_create_by(list: @list, movie: movie)
       end
     end.compact
 
