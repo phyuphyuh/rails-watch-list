@@ -5,7 +5,7 @@
   // border: 1px solid $ruddy-blue;
   border: none;
   border-radius: 0;
-  font-family: "Cutive Mono", serif;
+  // font-family: "Cutive Mono", serif;
 
   input {
     flex: 1;
@@ -32,15 +32,15 @@
   padding: 4px 8px;
   display: flex;
   align-items: center;
-  font-size: 14px;
+  font-size: 0.95rem;
 
   button {
     background: none;
     border: none;
-    color: $lighter-jet;
-    font-size: 12px;
+    color: $ruddy-blue;
     margin-left: 5px;
     cursor: pointer;
+    font-family: "Roboto Flex", "Helvetica", serif;
 
     &:hover {
       color: $airforce-blue;
