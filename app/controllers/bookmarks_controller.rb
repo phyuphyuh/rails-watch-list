@@ -38,15 +38,20 @@ class BookmarksController < ApplicationController
         fetched_movie.save if fetched_movie
         fetched_movie
       end
-      Bookmark.find_or_create_by(list: @list, movie: movie)
-    end
+
+      unless Bookmark.exists?(list: @list, movie: movie)
+        Bookmark.create(list: @list, movie: movie)
+      end
+    end.compact
 
     @bookmarks = @list.bookmarks
 
-    render turbo_stream: [
-      turbo_stream.append("bookmarks", partial: "lists/card_movie", locals: { bookmark: new_bookmarks.last }),
-      turbo_stream.replace("bookmark_count", partial: "lists/bookmark_count", locals: { count: @bookmarks.count })
-    ]
+    if new_bookmarks.any?
+      render turbo_stream: [
+        turbo_stream.append("bookmarks", partial: "lists/card_movie", locals: { bookmark: new_bookmarks.last }),
+        turbo_stream.replace("bookmark_count", partial: "lists/bookmark_count", locals: { count: @bookmarks.count })
+      ]
+    end
   end
 
   def update
