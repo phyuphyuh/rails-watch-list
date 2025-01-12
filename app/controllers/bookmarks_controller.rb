@@ -55,6 +55,7 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.find(params[:id])
     @bookmark.destroy
     redirect_to list_path(@bookmark.list), status: :see_other
+    # render turbo_stream: turbo_stream.replace("bookmark_count", partial: "lists/bookmark_count", locals: { count: @bookmark.list.bookmarks.count })
   end
 
   private
