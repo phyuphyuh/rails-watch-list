@@ -51,6 +51,7 @@
   transition: all 0.3s ease;
   cursor: pointer;
   background-color: $cream;
+  border: 0.3px solid $lighter-jet;
 
   img {
     object-fit: cover;
@@ -138,7 +139,7 @@
     transform: rotateY(180deg);
     height: 100%;
     font-size: 1.3rem;
-    border: 1px solid $lighter-jet;
+    border: 0.7px solid $lighter-jet;
 
     span {
       position: relative;
@@ -185,17 +186,20 @@
 .comment {
   padding: 8px;
   border-radius: 4px;
-  background-color: $offwhite;
-  color: $blue;
+  background-color: $cream;
+  border: 0.5px solid $subtitleyellow;
+  color: $commentblue;
+  font-size: 0.95rem;
+  text-wrap: pretty;
 }
 
 .comment-input {
   margin-bottom: -16px;
 }
 
-h6 {
+.review {
   color: $blue;
-  font-weight: 200;
+  font-size: 0.97rem;
   margin-bottom: 4px;
 }
 

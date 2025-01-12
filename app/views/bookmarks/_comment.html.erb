@@ -1,6 +1,6 @@
 <%= turbo_frame_tag "bookmark_comment_#{bookmark.id}" do %>
   <div class="comment-container" data-edit-comment-target="partial">
-    <h6>REVIEW</h6>
+    <span class="review">REVIEW</span>
     <div class="comment" data-edit-comment-target="comment">
       <%= bookmark.comment.present? ? simple_format(bookmark.comment.strip) : "<p>No comment</p>".html_safe %>
       <button type="button" class="edit-btn" data-action="click->edit-comment#displayForm">EDIT</button>
