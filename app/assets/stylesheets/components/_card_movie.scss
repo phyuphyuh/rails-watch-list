@@ -179,7 +179,7 @@
 }
 
 .comment-container {
-  position: relative;
+  // position: relative;
 }
 
 .comment {
@@ -188,6 +188,7 @@
   border-radius: 4px;
   background-color: $offwhite;
   color: $blue;
+  position: relative;
 }
 
 .comment-input {

@@ -1,9 +1,7 @@
 <div class="card-movie"
     data-movie-id="<%= bookmark.movie.api_id %>"
     data-movie-title="<%= bookmark.movie.title %>"
-    data-action="click->expand-card#toggle"
-  data-controller="edit-comment"
-  data-edit-comment-target="card">
+    data-action="click->expand-card#toggle">
   <div class="flip-card">
     <div class="front-poster">
       <% if bookmark.movie.poster_url %>
@@ -47,10 +45,8 @@
       </div>
     </div>
     <%# <p>TMDB <%= bookmark.movie.rating.round(1) %>
-    <div class="update-comment mt-3">
-      <%= turbo_frame_tag bookmark do %>
-        <%= render 'bookmarks/comment', bookmark: bookmark %>
-      <% end %>
+    <div class="update-comment mt-3" data-controller="edit-comment">
+      <%= render 'bookmarks/comment', bookmark: bookmark %>
     </div>
   </div>
   <%# <%= link_to "DELETE", bookmark_path(bookmark), class: "edit-btn", data: {turbo_method: :delete, turbo_confirm: "Delete bookmark?"} %>

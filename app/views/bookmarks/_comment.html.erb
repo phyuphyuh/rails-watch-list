@@ -1,11 +1,11 @@
-<div class="comment-container">
-  <h6>REVIEW</h6>
-  <div class="comment" data-edit-comment-target="comment">
-    <%= bookmark.comment.present? ? simple_format(bookmark.comment.strip) : "<p>No comment</p>".html_safe %>
-    <button type="button" class="edit-btn" data-action="click->edit-comment#displayForm">EDIT</button>
-  </div>
-</div>
-<%= simple_form_for [bookmark.list, bookmark],
+<%= turbo_frame_tag bookmark do %>
+  <div class="comment-container" data-edit-comment-target="partial">
+    <h6>REVIEW</h6>
+    <div class="comment" data-edit-comment-target="comment">
+      <%= bookmark.comment.present? ? simple_format(bookmark.comment.strip) : "<p>No comment</p>".html_safe %>
+      <button type="button" class="edit-btn" data-action="click->edit-comment#displayForm">EDIT</button>
+    </div>
+    <%= simple_form_for [bookmark.list, bookmark],
       html: {
         class: 'd-none',
         data: {
@@ -13,6 +13,8 @@
           action: "submit->edit_comment#update click->edit-comment#preventCollapse"
         }
       } do |f| %>
-  <%= f.input :comment, label: false, value: bookmark.comment, input_html: { class: "comment-input", data: { edit_comment_target: "input" } } %>
-  <%= f.submit "SAVE", class: 'save-btn' %>
+      <%= f.input :comment, label: false, value: bookmark.comment, input_html: { class: "comment-input", data: { edit_comment_target: "input" } } %>
+      <%= f.submit "SAVE", class: 'save-btn' %>
+    <% end %>
+  </div>
 <% end %>
