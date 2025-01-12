@@ -11,27 +11,6 @@ class BookmarksController < ApplicationController
 
     movie_ids = params[:movie_ids].is_a?(Array) ? [params[:movie_ids]] : params[:movie_ids].to_s.split(',')
 
-    # new_bookmarks = []
-
-    # movie_ids.each do |movie_id|
-    #   movie = Movie.find_by(api_id: movie_id) || MovieSearchService.new(api_id: movie_id).call.first
-
-    #   if movie
-    #     # @list.bookmarks.find_or_create_by(movie: movie)
-    #     bookmark = Bookmark.find_by(list: @list, movie: movie) || Bookmark.new(list: @list, movie: movie)
-    #     if bookmark.new_record? && bookmark.save
-    #       new_bookmarks << bookmark
-    #     end
-    #   end
-    # end
-
-    # if new_bookmarks.any?
-    #    # render json: { success: true, bookmarks: new_bookmarks.as_json(include: { movie: { only: [:api_id, :title, :poster_url, :release_date, :overview, :rating, :runtime, :genres] } }) }
-    #   render turbo_stream: turbo_stream.append("bookmarks", partial: 'lists/card_movie', locals: { bookmark: new_bookmarks.last })
-    # else
-    #   render json: { success: false }, status: :unprocessable_entity
-    # end
-
     new_bookmarks = movie_ids.map do |movie_id|
       movie = Movie.find_by(api_id: movie_id) || begin
         fetched_movie = MovieSearchService.new(api_id: movie_id).call.first
