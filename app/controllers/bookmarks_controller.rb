@@ -41,15 +41,12 @@ class BookmarksController < ApplicationController
       Bookmark.find_or_create_by(list: @list, movie: movie)
     end
 
-    respond_to do |format|
-      format.turbo_stream do
-        render turbo_stream: turbo_stream.append(
-          "bookmarks",
-          partial: "lists/card_movie",
-          locals: { bookmark: new_bookmarks.last }
-        )
-      end
-    end
+    @bookmarks = @list.bookmarks
+
+    render turbo_stream: [
+      turbo_stream.append("bookmarks", partial: "lists/card_movie", locals: { bookmark: new_bookmarks.last }),
+      turbo_stream.replace("bookmark_count", partial: "lists/bookmark_count", locals: { count: @bookmarks.count })
+    ]
   end
 
   def update

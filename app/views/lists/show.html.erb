@@ -3,7 +3,7 @@
     <div class="list-name d-flex flex-column justify-content-center">
       <h1><%= @list.name %></h1>
       <p><%= @list.description %></p>
-      <p><%= @bookmarks.count %> films</p>
+      <p id="bookmark_count"><%= @bookmarks.count %> films</p>
     </div>
     <% if @list.photo.attached? %>
       <div class="list-img">
