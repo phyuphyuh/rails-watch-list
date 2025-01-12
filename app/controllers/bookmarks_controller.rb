@@ -58,6 +58,7 @@ class BookmarksController < ApplicationController
     @bookmark = @list.bookmarks.find(params[:id])
 
     if @bookmark.update(bookmark_params)
+      # render partial: 'bookmarks/comment', locals: { bookmark: @bookmark }
       render turbo_stream: turbo_stream.replace("bookmark_#{@bookmark.id}", partial: 'bookmarks/comment', locals: { bookmark: @bookmark })
     else
       render turbo_stream: turbo_stream.replace("bookmark_#{@bookmark.id}", partial: 'bookmarks/comment', locals: { bookmark: @bookmark }), status: :unprocessable_entity

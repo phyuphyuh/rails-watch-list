@@ -1,7 +1,7 @@
 <div class="comment-container">
   <h6>REVIEW</h6>
   <div class="comment" data-edit-comment-target="comment">
-    <p><%= bookmark.comment.presence || "No comment" %></p>
+    <%= bookmark.comment.present? ? simple_format(bookmark.comment.strip) : "<p>No comment</p>".html_safe %>
     <button type="button" class="edit-btn" data-action="click->edit-comment#displayForm">EDIT</button>
   </div>
 </div>
