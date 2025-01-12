@@ -4,8 +4,6 @@
 }
 
 .list-info {
-  // height: 65vh;
-  // width: 95%;
   height: 100vh;
   overflow-y: auto;
   width: 30%;
@@ -55,21 +53,11 @@
   }
 
   .list-name {
-    // width: 440px;
     height: fit-content;
     overflow-y: auto;
     color: $jet;
-    // padding: 16px 0px;
     text-wrap: pretty;
-    // background-image: linear-gradient($moonstone, $skyblue);
-    // background-color: rgba($color: $charcoal, $alpha: 0.8);
-    // font-weight: bold;
-    // position: absolute;
-    // bottom: 0;
-    // left: 0;
-    // right: 0;
-    // padding: 24px;
-    // z-index: 3;
+
     h1 {
       font-weight: 400;
     }
@@ -79,20 +67,11 @@
       display: block;
       color: $lighter-jet;
     }
-    p:nth-of-type(2) {
+    #bookmark_count {
       font-size: 0.93rem;
-      color: $ruddy-blue;
+      color: $moonstone;
       margin-bottom: 0;
     }
-    // &:hover p {
-    //   display: none;
-    //   transition: display 0.3s linear allow-discrete;
-    // }
-    // @starting-style {
-    //   p {
-    //     display: block;
-    //   }
-    // }
   }
 }
 

@@ -10,6 +10,7 @@
         <%= cl_image_tag @list.photo.key %>
       </div>
     <% end %>
+    <%= link_to "DELETE LIST", list_path(@list), data: {turbo_method: :delete, turbo_confirm: "Delete list?"},  class: "delete" %>
   </div>
   <div class="bookmarks-container">
     <%= turbo_frame_tag "bookmarks", class: "list-bookmarks movie-cards", data: { controller: "expand-card" } do %>

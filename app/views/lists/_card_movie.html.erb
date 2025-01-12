@@ -48,6 +48,6 @@
     <div class="update-comment mt-3" data-controller="edit-comment">
       <%= render 'bookmarks/comment', bookmark: bookmark %>
     </div>
+    <%= link_to "DELETE", bookmark_path(bookmark), class: "delete d-block text-end mt-3", data: {turbo_method: :delete, turbo_confirm: "Delete bookmark?"} %>
   </div>
-  <%# <%= link_to "DELETE", bookmark_path(bookmark), class: "edit-btn", data: {turbo_method: :delete, turbo_confirm: "Delete bookmark?"} %>
 </div>

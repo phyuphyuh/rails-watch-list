@@ -98,3 +98,15 @@
     color: $aureolin;
   }
 }
+
+.delete {
+  color: $ruddy-blue;
+  font-size: 0.8rem;
+  background-color: transparent;
+  text-decoration: none;
+  text-align: right;
+
+  &:hover {
+    color: $subtitleyellow;
+  }
+}
